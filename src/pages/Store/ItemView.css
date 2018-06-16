@@ -12,8 +12,11 @@
 .image {
     opacity: 1;
     display: block;
-    width: 100%;
-    height: auto;
+    width: 280px;
+    height: 190px;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 3px;
     transition: .5s ease;
     backface-visibility: hidden;
 }

@@ -54,7 +54,7 @@ class NavigationBar extends React.Component {
             </Nav>
             <Nav pullRight>
                 {!this.state.loggedIn ?
-                    <NavItem eventKey={"login"} onSelect={this.handleClick}>Hi Mr.Someone</NavItem>
+                    <NavItem eventKey={"login"} onSelect={this.handleClick}>Login/Logout/Signup</NavItem>
                     :
                     [<NavItem>Sign in</NavItem>, <NavItem>Sign up</NavItem>]
                 }
