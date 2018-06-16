@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import {Grid, Row, Col} from 'react-bootstrap';
+import {Breadcrumb} from 'react-bootstrap';
 import {Panel} from 'react-bootstrap';
 
 import {NavLink} from 'react-router-dom'
@@ -195,6 +196,13 @@ class Store extends React.Component {
         return(
             <div>
                 <Header/>
+                <Breadcrumb>
+                    <Breadcrumb.Item href="/store">Store</Breadcrumb.Item>
+                    {/*<Breadcrumb.Item href="http://getbootstrap.com/components/#breadcrumbs">*/}
+                        {/*Library*/}
+                    {/*</Breadcrumb.Item>*/}
+                    {/*<Breadcrumb.Item active>Data</Breadcrumb.Item>*/}
+                </Breadcrumb>
                 <Grid>
                     <Row>
                         <Col md={10} >

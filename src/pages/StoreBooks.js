@@ -1,12 +1,18 @@
+/*global google*/
 import React from 'react';
 
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import {Menu} from 'primereact/components/menu/Menu';
+
+import {Breadcrumb} from 'react-bootstrap';
+
 import ItemView from "./Store/ItemView";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import ListView from "./Store/ListView";
+
+// test
+import {GMap} from 'primereact/components/gmap/GMap';
 
 class StoreBooks extends React.Component {
     constructor(props){
@@ -32,7 +38,6 @@ class StoreBooks extends React.Component {
         let res = [];
         data.forEach((item) => {
             console.log(item);
-            debugger
             res.push(
                 {
                     label: item.title,
@@ -49,11 +54,9 @@ class StoreBooks extends React.Component {
         this.setState({
             subCategories: res
         });
-        debugger
     };
 
     applyView = (bundle) => {
-        debugger
         let n = bundle.length;
         let res = [];
         while (n > 0) {
@@ -100,9 +103,22 @@ class StoreBooks extends React.Component {
     };
 
     render() {
+        let options = {
+            center: {lat: 36.890257, lng: 30.707417},
+            zoom: 12
+        };
         return(
             <div>
                 <Header/>
+                <Breadcrumb>
+                    <Breadcrumb.Item href="/store">Store</Breadcrumb.Item>
+                    <Breadcrumb.Item active>
+                        {this.props.language}
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item active>
+                        {this.props.code}
+                    </Breadcrumb.Item>
+                </Breadcrumb>
                 <Grid>
                     <Row>
                         <Col md={2}>
