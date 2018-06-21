@@ -1,8 +1,10 @@
 import React from 'react';
-import {Navbar, NavItem, Nav, NavDropdown, MenuItem} from 'react-bootstrap'
+import {Navbar, NavItem, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
+
+import {FormGroup, FormControl, Button} from 'react-bootstrap';
 import LogInModal from "./LogInModal";
 
-import {NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom';
 
 class NavigationBar extends React.Component {
 
@@ -35,24 +37,25 @@ class NavigationBar extends React.Component {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
+                <Navbar.Collapse>
+                    <Navbar.Form pullLeft>
+                        <FormGroup>
+                            <FormControl type="text" placeholder="Search" />
+                        </FormGroup>{' '}
+                        <Button type="submit">Search</Button>
+                    </Navbar.Form>
+                </Navbar.Collapse>
+            </Nav>
+            <Nav pullRight>
+                {/* <NavItem>
+                    <Button bsStyle="primary">Primary</Button>
+                </NavItem> */}
                 <NavItem eventKey={"store"} href="/store">
                     Store
-                </NavItem>
-                <NavItem eventKey={"trasaction"} href="/transaction">
-                    Transaction
                 </NavItem>
                 <NavItem eventKey={"explore"} href="/explore">
                     Explore
                 </NavItem>
-                {/*<NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">*/}
-                    {/*<MenuItem eventKey={3.1}>Action</MenuItem>*/}
-                    {/*<MenuItem eventKey={3.2}>Another action</MenuItem>*/}
-                    {/*<MenuItem eventKey={3.3}>Something else here</MenuItem>*/}
-                    {/*<MenuItem divider />*/}
-                    {/*<MenuItem eventKey={3.4}>Separated link</MenuItem>*/}
-                {/*</NavDropdown>*/}
-            </Nav>
-            <Nav pullRight>
                 {!this.state.loggedIn ?
                     <NavItem eventKey={"login"} onSelect={this.handleClick}>Login/Logout/Signup</NavItem>
                     :

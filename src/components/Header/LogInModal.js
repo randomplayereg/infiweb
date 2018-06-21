@@ -9,7 +9,7 @@ class LogInForm extends React.Component {
 
         this.handlePWChange = this.handlePWChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handleSummit = this.handleSummit.bind(this);
+        this.handleSummit = this.handleSummit.bind(this);        
 
         // this.state = {
         //     email: undefined,
@@ -47,7 +47,15 @@ class LogInForm extends React.Component {
 
         e.preventDefault();
         var md5 = require('md5');
-        const pw = btoa(md5(this.state.password));
+        // var pw = btoa(md5(this.state.password));
+
+        const md5Base64 = require('md5-base64');
+        const hash = md5Base64(this.state.password);
+
+
+        console.log('pw md5: ', md5(this.state.password));
+        console.log('pw after encode: ' + btoa(md5(this.state.password)));
+        console.log('pw use md5-base64: ' + hash);
         const api_call = await fetch('https://thedung.pythonanywhere.com/api/user/login',
             {
                 method: 'POST',
@@ -56,7 +64,7 @@ class LogInForm extends React.Component {
                 },
                 body: JSON.stringify({
                     email: this.state.email,
-                    password: pw,
+                    password: hash,
                     login_type: this.state.email,
                     fcm_token: "fzYu1WW46Rs:APA91bF5_KMWd5FJaXtjoauWzlxIFhOPcZ-BwZpsIj-keErX_6tfXlWUvWngSoj6PnLgMDcBrJ5M6YFwS370H6CPQ-YIZm3nCzwqXTEll4ug8b0oPwiFrK3m0dkO9126K5UVBzXYyL39"
                 })
