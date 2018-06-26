@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar, NavItem, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
 
-import {FormGroup, FormControl, Button, DropdownButton} from 'react-bootstrap';
+import {FormGroup, FormControl, Button, DropdownButton, Dropdown, Badge} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import LogInModal from "./LogInModal";
 
@@ -77,11 +77,19 @@ class NavigationBar extends React.Component {
                 </Navbar.Collapse>
             </Nav>
             <Nav pullRight>
-                <NavItem eventKey={"store"} href="/store">
-                    Tủ sách
-                </NavItem>
-                <NavItem eventKey={"explore"} href="/explore">
-                    Khám phá
+                <NavItem eventKey={"notification"}>
+                    <Dropdown noCaret>
+                        <Dropdown.Toggle>
+                            <Glyphicon glyph="bell" />
+                            <Badge>4</Badge>                            
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="super-colors">
+                            <MenuItem eventKey="1">This request</MenuItem>
+                            <MenuItem eventKey="2">That request</MenuItem>
+                            <MenuItem eventKey="3">Another one</MenuItem>
+                            <MenuItem eventKey="4">And another one</MenuItem>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </NavItem>
                 {!this.state.loggedIn ?
                     // <NavItem eventKey={"dashboard"} onSelect={this.handleClick}>{localStorage.getItem('username')}</NavItem>
