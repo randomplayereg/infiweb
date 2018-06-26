@@ -5,10 +5,6 @@ import {Grid, Row, Col, Image, Label, Well, Badge, Button, Panel, FormGroup, For
 import {Sidebar} from 'primereact/components/sidebar/Sidebar';
 import MyFancyComponent from './MyFancyComponent';
 
-import Geocode from 'react-geocode';
-
-const google = window.google;
-
 class Test extends React.Component {
     render() {
 
@@ -82,110 +78,38 @@ class Instance extends React.Component {
             })
             .then((response) => response.json())
             .then((json => {
-                Geocode.setApiKey('AIzaSyAQDOsz5Zdwks9zGw9lfDfW4LiNaP_tIV0');                
-                Geocode.fromAddress(`
-                    ${json.location.detail},
-                    ${json.location.ward},
-                    ${json.location.district},
-                    ${json.location.city},
-                    ${json.location.country}`)
-                .then(
-                    response => {
-                        const { lat, lng } = response.results[0].geometry.location;
-                        this.setState({
-                            userLocation: {lat, lng},
-                            userAddress: 
-                                json.location.detail + ',' +
-                                json.location.ward + ',' +
-                                json.location.district + ',' +
-                                json.location.city
-                        });
-                        console.log('type');
-                        console.log(this.state.userLocation);
-                    },
-                    error => {
-                        console.log(error);
-                    }
-                );
-
-                // var geocoder;
-                // var res = {};
-                // function initialize(address) {
-                //     geocoder = new google.maps.Geocoder();
-                //     codeLatLng(address, 
-                //         function(latlng){
-                //             res.lat = latlng.lat();
-                //             res.lng = latlng.lng();
-                //         });
-                // }
-
-                // function codeLatLng(address, callback) {
-                //     if (geocoder) {
-                //         geocoder.geocode({'address': address}, function(results, status) {
-                //             if (status == google.maps.GeocoderStatus.OK) {
-                //                 if (results[0]) {
-                //                     callback(results[0].geometry.location);
-                //                     // callbackLat(results[0].geometry.location.lat());
-                //                     // callbackLng(results[0].geometry.location.lng());
-                //                 } else {
-                //                     alert("No results found");
-                //                 }
-                //             } else {
-                //                 alert("Geocoder failed due to: " + status);
-                //             }
-                //         });
-                //     }
-                // }
-
-                // initialize(
-                //             json.location.detail + ',' + 
-                //             json.location.ward + ',' + 
-                //             json.location.district + ',' +
-                //             json.location.city + ',' +
-                //             json.location.country
-                // );
-
-                // console.log(res);
-                // this.setState({
-                //     userLocation : res
-                // });
-
-
-                // var geocoder = new google.maps.Geocoder();
-                // var res;
-                // geocoder.geocode({
-                //                     'address': `
-                //                         ${json.location.detail},
-                //                         ${json.location.ward},
-                //                         ${json.location.district},
-                //                         ${json.location.city},
-                //                         ${json.location.country}`,
-                //                     'region' : 'vn'
-                //                 },
-                //                 function(results, status) {
-                //                     if (status === 'OK') {
-                //                         if (results[0]) {
-                //                             res = {
-                //                                 lat: results[0].geometry.location.lat(),
-                //                                 lng: results[0].geometry.location.lng()
-                //                             }
-                //                         }
-                //                     } else {
-                //                         alert('Geocode was not successful for the following reason: ' + status);
-                //                     }
-                //                 });                
-                // console.log(res);
-    
-                // console.log('out');                
-                // this.setState({
-                //     userLocation: res,
-                //     userAddress: 
-                //         json.location.detail + ',' +
-                //         json.location.ward + ',' +
-                //         json.location.district + ',' +
-                //         json.location.city
-                // });
-            }));        
+                this.setState({
+                    userAddress: `${json.location.detail}, ${json.location.ward}, ${json.location.district}, ${json.location.city}, ${json.location.country}`
+                })
+                
+            }))
+            // .then((json => {
+            //     Geocode.setApiKey('AIzaSyAQDOsz5Zdwks9zGw9lfDfW4LiNaP_tIV0');                
+            //     Geocode.fromAddress(`
+            //         ${json.location.detail},
+            //         ${json.location.ward},
+            //         ${json.location.district},
+            //         ${json.location.city},
+            //         ${json.location.country}`)
+            //     .then(
+            //         response => {
+            //             const { lat, lng } = response.results[0].geometry.location;
+            //             this.setState({
+            //                 userLocation: {lat, lng},
+            //                 userAddress: 
+            //                     json.location.detail + ',' +
+            //                     json.location.ward + ',' +
+            //                     json.location.district + ',' +
+            //                     json.location.city
+            //             });
+            //             console.log('type');
+            //             console.log(this.state.userLocation);
+            //         },
+            //         error => {
+            //             console.log(error);
+            //         }
+            //     );
+            // }));        
     }
 
     renderSendRequest() {
@@ -243,10 +167,10 @@ class Instance extends React.Component {
                 <Grid fluid>
                     <Row>
                         <Col md={6}>
-                            {this.state.userLocation && 
+                            {this.state.userAddress && 
                                 <MyFancyComponent
-                                    lat={this.state.userLocation.lat}
-                                    lng={this.state.userLocation.lng}
+                                    userAddress={this.state.userAddress}
+                                    // userAddress={'Dong Hoi, Quang Binh'}
                                 />
                             }
                         </Col>

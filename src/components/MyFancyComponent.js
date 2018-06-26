@@ -1,5 +1,5 @@
 import React from "react"
-import { compose, withProps } from "recompose"
+import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
 const MyMapComponent = compose(
@@ -10,7 +10,12 @@ const MyMapComponent = compose(
         mapElement: <div style={{ height: `100%` }} />,
     }),
     withScriptjs,
-    withGoogleMap
+    withGoogleMap,
+    lifecycle({
+        componentDidMount() {            
+            this.props.geodude();
+        }
+    })
 )
 (
     (props) =>
@@ -27,12 +32,21 @@ const MyMapComponent = compose(
 );
 
 class MyFancyComponent extends React.PureComponent {
+
+    constructor(props) {
+        super(props);
+
+        this.geodude = this.geodude.bind(this);
+    }
+
     state = {
         isMarkerShown: true,
+        lat: 10.773659,
+        lng: 106.694152
     }
 
     componentDidMount() {
-        // this.delayedShowMarker()
+        // this.delayedShowMarker()        
     }
 
     delayedShowMarker = () => {
@@ -46,13 +60,32 @@ class MyFancyComponent extends React.PureComponent {
         // this.delayedShowMarker()
     }
 
+    geodude() {
+        let geocoder = new window.google.maps.Geocoder();
+
+        var self = this;
+        geocoder.geocode( { 'address': this.props.userAddress}, function(results, status) {
+            if (status == 'OK') {
+                const location = results[0].geometry.location;
+                
+                self.setState({
+                    lat: location.lat(),
+                    lng: location.lng()
+                })
+            } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
     render() {
         return (
             <MyMapComponent
                 isMarkerShown={this.state.isMarkerShown}
                 onMarkerClick={this.handleMarkerClick}
-                lat={this.props.lat}
-                lng={this.props.lng}
+                lat={this.state.lat}
+                lng={this.state.lng}
+                geodude={this.geodude}
             />
         )
     }
