@@ -65,11 +65,16 @@ class LogInForm extends React.Component {
             });
         const data = await api_call.json();
         console.log(data);
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', data.real_name);
-        localStorage.setItem('uid', data.email);
+        if (data.error_code) {
+            if (data.error_code === 11)
+                alert('wrong email or password');
+        } else {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', data.real_name);
+            localStorage.setItem('uid', data.email);
 
-        window.location.replace('/');
+            window.location.replace('/');
+        }
     }
 
     render() {
