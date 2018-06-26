@@ -2,12 +2,11 @@ import React from 'react';
 import SideNavigation from './SideNavigation';
 
 import {Grid, Row, Col} from 'react-bootstrap';
-import MainContent from './MainContent';
+import BookContent from './BookContent';
 
-class Body extends React.Component {
+class BodyShelf extends React.Component {
     
     render() {
-
         var styles = {
             fill: {
                 color: 'red',
@@ -31,7 +30,9 @@ class Body extends React.Component {
                         <SideNavigation />
                     </Col>
                     <Col md={8}>
-                        <MainContent />
+                        <BookContent 
+                            language={this.props.language}
+                            category={this.props.category}/>
                     </Col>
                     <Col md={2} fluid>
                         <img src="https://picsum.photos/195/500" style={styles.rightside}/>
@@ -42,4 +43,4 @@ class Body extends React.Component {
     }
 }
 
-export default Body;
+export default BodyShelf;

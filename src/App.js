@@ -7,14 +7,17 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Store from "./pages/Store";
 import Transaction from "./pages/Transaction";
 import Explore from "./pages/Explore";
-import StoreBooks from "./pages/StoreBooks";
+import Shelf from './pages/Shelf';
+import BookView from './pages/BookView';
 
 class App extends React.Component {
-    ComponentWithRegex = ({ match }) => {
+    ComponentCategory = ({ match }) => {
         if (match.params.language === "VN") {
-            if (['01','02','03','04','05','06','07','08','09'].includes(match.params.code)) {
+            if (['01','02','03','04','05','06','07','08','09'].includes(match.params.category)) {
                 return (
-                    <StoreBooks language={match.params.language} code={match.params.code}/>
+                    // <StoreBooks language={match.params.language} category={match.params.category}/>
+                    // <BookContent language={match.params.language} category={match.params.category}/>
+                    <Shelf language={match.params.language} category={match.params.category}/>
                 )
             } else {
                 return (
@@ -23,9 +26,11 @@ class App extends React.Component {
             }
         }
         if (match.params.language === "EN") {
-            if (['02','03'].includes(match.params.code)) {
+            if (['02','03'].includes(match.params.category)) {
                 return (
-                    <StoreBooks language={match.params.language} code={match.params.code}/>
+                    // <StoreBooks language={match.params.language} category={match.params.category}/>
+                    // <BookContent language={match.params.language} category={match.params.category}/>
+                    <Shelf language={match.params.language} category={match.params.category}/>
                 )
             } else {
                 return (
@@ -34,6 +39,17 @@ class App extends React.Component {
             }
         }
     };
+
+    ComponentDetailBook = ({ match }) => {
+        if (match.params.code !== "") {
+            return (
+                <BookView 
+                    code={match.params.code}
+                    />
+            )
+        }
+    }
+
     render() {
         return (
             <BrowserRouter>
@@ -42,10 +58,15 @@ class App extends React.Component {
                     <Route path='/store' component={Store} exact/>
 
                     <Route
-                        path="/store/:language(VN|EN)/:code(01|02|03|04|05|06|07|08|09)"
-                        component={this.ComponentWithRegex}
+                        path="/store/:language(VN|EN)/:category(01|02|03|04|05|06|07|08|09)"
+                        component={this.ComponentCategory}
                         exact
                     />
+
+                    <Route 
+                        path="/store/:code"
+                        component={this.ComponentDetailBook}
+                        />
 
                     <Route path='/transaction' component={Transaction} exact/>
                     <Route path='/explore' component={Explore} exact/>

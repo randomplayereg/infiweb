@@ -6,8 +6,7 @@ import {Label, Glyphicon} from 'react-bootstrap';
 import {Carousel, Button} from 'react-bootstrap';
 
 import {ListGroup, ListGroupItem} from 'react-bootstrap';
-
-
+import CategoryCarousel from './CategoryCarousel';
 
 class SideNavigation extends React.Component {
 
@@ -16,7 +15,7 @@ class SideNavigation extends React.Component {
     
         this.handleSelect = this.handleSelect.bind(this);
         this.handleSelectCarousel = this.handleSelectCarousel.bind(this);
-    
+        this.handleSelectCategory = this.handleSelectCategory.bind(this);    
         this.state = {
             index: 0,
             direction: null
@@ -32,7 +31,11 @@ class SideNavigation extends React.Component {
         this.setState({
           index: selectedIndex,
           direction: e.direction
-        });
+        });        
+    }    
+
+    handleSelectCategory(selectedIndex) {
+        alert(`${selectedIndex}`);
     }
 
 	render() {
@@ -57,12 +60,12 @@ class SideNavigation extends React.Component {
             }
         }
 
-        const { index, direction } = this.state;
+        const { index, direction, tree } = this.state;
 
     	return(
             <div style={styles.overallColor}>
                 <Nav bsStyle="pills" stacked activeKey={1} onSelect={this.handleSelect}>
-                    <NavItem eventKey={1} toogle  title="Trang chủ">
+                    <NavItem eventKey={1} toogle="true"  title="Trang chủ">
                         <Glyphicon glyph="home"/>
                         <span> Trang chủ</span>
                     </NavItem>
@@ -81,36 +84,7 @@ class SideNavigation extends React.Component {
                         <span> Danh mục sách</span>
                     </Label>
                 </h4>
-                <Carousel
-                    activeIndex={index}
-                    direction={direction}
-                    onSelect={this.handleSelectCarousel}
-                    indicators={false}
-                    slide={true}
-                >
-                    <Carousel.Item>
-                        <div style={styles.padding}>
-                            <h5><Glyphicon glyph="font" /> Tieng Viet</h5>
-                            <ListGroup>
-                                <ListGroupItem bsStyle="success">Van hoc</ListGroupItem>
-                                <ListGroupItem bsStyle="info">HH</ListGroupItem>
-                                <ListGroupItem bsStyle="warning">Warning</ListGroupItem>
-                                <ListGroupItem bsStyle="danger">Danger</ListGroupItem>
-                            </ListGroup>
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <div style={styles.padding}>
-                            <h5><Glyphicon glyph="globe" /> Tieng Anh</h5>
-                            <ListGroup>
-                                <ListGroupItem bsStyle="success">Van hoc</ListGroupItem>
-                                <ListGroupItem bsStyle="info">HH</ListGroupItem>
-                                <ListGroupItem bsStyle="warning">Warning</ListGroupItem>
-                                <ListGroupItem bsStyle="danger">Danger</ListGroupItem>
-                            </ListGroup>
-                        </div>
-                    </Carousel.Item>
-                </Carousel>
+                <CategoryCarousel/>
             </div>
     	)
   	}

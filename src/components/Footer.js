@@ -4,8 +4,13 @@ import Copyright from "./Footer/Copyright";
 
 class Footer extends React.Component {
     render() {
+        const styles = {
+            container: {
+                marginTop: '400px'
+            }
+        }
         return(
-            <div>
+            <div style={styles.container}>
                 <hr/>
                 <Info/>
                 <Copyright/>

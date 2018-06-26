@@ -46,15 +46,9 @@ class LogInForm extends React.Component {
         };
 
         e.preventDefault();
-        var md5 = require('md5');
-        // var pw = btoa(md5(this.state.password));
 
         const md5Base64 = require('md5-base64');
         const hash = md5Base64(this.state.password);
-
-
-        console.log('pw md5: ', md5(this.state.password));
-        console.log('pw after encode: ' + btoa(md5(this.state.password)));
         console.log('pw use md5-base64: ' + hash);
         const api_call = await fetch('https://thedung.pythonanywhere.com/api/user/login',
             {
@@ -71,6 +65,11 @@ class LogInForm extends React.Component {
             });
         const data = await api_call.json();
         console.log(data);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('username', data.real_name);
+        localStorage.setItem('uid', data.email);
+
+        window.location.replace('/');
     }
 
     render() {
