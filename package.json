@@ -20,6 +20,10 @@
     "react-transition-group": "^2.3.1",
     "recompose": "^0.27.1"
   },
+  "engines": {
+    "node": "10.5.0",
+    "npm": "6.1.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
