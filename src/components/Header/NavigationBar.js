@@ -98,15 +98,23 @@ class NavigationBar extends React.Component {
                             bsStyle={'default'}
                             title={localStorage.getItem('username')}
                             >
-                                <MenuItem eventKey="corner" onSelect={this.handleClick}>Góc của tôi</MenuItem>
+                                <MenuItem eventKey="corner" onSelect={this.handleClick}>
+                                    <Glyphicon glyph='user' /> Cập nhật tài khoản
+                                </MenuItem>
                                 <MenuItem divider />
-                                <MenuItem eventKey="logout" onSelect={this.handleClick}>Đăng xuất</MenuItem>
+                                <MenuItem eventKey="logout" onSelect={this.handleClick}>
+                                    <Glyphicon glyph='off' /> Đăng xuất
+                                </MenuItem>
                         </DropdownButton>
                     </NavItem>
                     :
                     [
-                        <NavItem eventKey={"signup"} onSelect={this.handleClick}>Đăng ký</NavItem>, 
-                        <NavItem eventKey={"login"} onSelect={this.handleClick}>Đăng nhập</NavItem>
+                        <NavItem eventKey={"signup"} onSelect={this.handleClick}>
+                            Đăng ký
+                        </NavItem>, 
+                        <NavItem eventKey={"login"} onSelect={this.handleClick}>
+                            Đăng nhập
+                        </NavItem>
                     ]
                 }
             </Nav>

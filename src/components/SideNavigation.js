@@ -23,7 +23,10 @@ class SideNavigation extends React.Component {
     }
 
 	handleSelect = (eventKey) => {
-		alert(`selected: ${eventKey}`);
+        alert(`selected: ${eventKey}`);
+        
+        if (eventKey === 'home') window.location.replace('/');
+        if (eventKey === 'transaction') window.location.replace('/transaction');
 	}
 
     handleSelectCarousel(selectedIndex, e) {
@@ -64,23 +67,23 @@ class SideNavigation extends React.Component {
 
     	return(
             <div style={styles.overallColor}>
-                <Nav bsStyle="pills" stacked activeKey={1} onSelect={this.handleSelect}>
-                    <NavItem eventKey={1} toogle="true"  title="Trang chủ">
+                <Nav bsStyle="pills" stacked activeKey={'home'} onSelect={this.handleSelect}>
+                    <NavItem eventKey={'home'} toogle="true"  title="Trang chủ">
                         <Glyphicon glyph="home"/>
                         <span> Trang chủ</span>
                     </NavItem>
-                    <NavItem eventKey={2} title="Những thông tin mới nhất">
-                        <Glyphicon glyph="heart-empty" />
-                        <span> Cộng đồng</span>                        
+                    <NavItem eventKey={'book'} title="Tủ sách">
+                        <Glyphicon glyph="book" />
+                        <span> Tủ sách</span>
                     </NavItem>
-                    <NavItem eventKey={3} title="Khám phá xung quanh bạn">
-                        <Glyphicon glyph="map-marker" />
-                        <span> Khám phá</span> 
+                    <NavItem eventKey={'transaction'} title="Trao đổi của bạn">
+                        <Glyphicon glyph="transfer" />
+                        <span> Trao đổi</span>
                     </NavItem>
                 </Nav>
                 <h4>
                     <Label bsStyle="default" style={styles.labelColor}>
-                        <Glyphicon glyph="book" />
+                        <Glyphicon glyph="th-list" />
                         <span> Danh mục sách</span>
                     </Label>
                 </h4>

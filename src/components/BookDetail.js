@@ -58,9 +58,12 @@ class Instance extends React.Component {
         super(props, context);
     
         this.state = {
-          panelRequestOpen: false,
-          mapVisible: false
+            panelRequestOpen: false,
+            mapVisible: false,
+            requestMessage: ''
         };   
+
+        this.sendRequest = this.sendRequest.bind(this);
 
         this.fetchLocation();
     }
@@ -112,6 +115,52 @@ class Instance extends React.Component {
             // }));        
     }
 
+    sendRequest() {
+
+        const instance = this.props.info;
+
+        const currentEmail = localStorage.getItem('uid');
+
+        if (typeof(currentEmail) == undefined || currentEmail == null) {
+            alert('no login');
+            return
+        }
+
+        console.log(instance.book);
+
+        var details = {
+            'code': instance.book.code,
+            'email': currentEmail
+        };
+        
+        var formBody = [];
+        for (var property in details) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(details[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        
+        let url = `https://thedung.pythonanywhere.com/api/transaction/request-book`
+        fetch(url,
+        {
+            method: "PUT",
+            headers: {
+                "Authorization" : 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWRtaW4iLCJjcmVhdGVfdGltZSI6IjIwMTgtMDMtMDRUMDI6NTc6MjMuOTgxMjUzKzAwOjAwIiwiZW1haWwiOiJ0aGVkdW5nMjcwOUBnbWFpbC5jb20iLCJpZCI6MX0.dhZvtbK9YrUzdRObkurnRp89bCH7yy2L3sdaUbWQu0k'
+            },
+            body: formBody
+        })
+        .then((response) => {
+            console.log(response.headers.get('error_code'));
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+        })
+
+        console.log(this.state.requestMessage);
+    }
+
     renderSendRequest() {
 
         const styles = {
@@ -135,10 +184,10 @@ class Instance extends React.Component {
                             <FormControl 
                                 componentClass="textarea" 
                                 placeholder="Gửi lời nhắn tới người chủ sách..." 
-                                onChange={(e)=>console.log(`${e.target.value}`)}
+                                onChange={(e)=> this.setState({ requestMessage: e.target.value})}
                                 style={styles.messageBox}
                                 />
-                            <Button bsStyle="info" style={styles.sendButton}>Gửi yêu cầu mượn</Button>
+                            <Button bsStyle="info" style={styles.sendButton} onClick={this.sendRequest}>Gửi yêu cầu mượn</Button>
                         </FormGroup>
                     </Panel.Body>
                 </Panel.Collapse>

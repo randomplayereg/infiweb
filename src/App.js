@@ -9,6 +9,8 @@ import Transaction from "./pages/Transaction";
 import Explore from "./pages/Explore";
 import Shelf from './pages/Shelf';
 import BookView from './pages/BookView';
+import UserCorner from './components/UserCorner';
+import TransactionDetail from './components/TransactionDetail';
 
 class App extends React.Component {
     ComponentCategory = ({ match }) => {
@@ -50,6 +52,16 @@ class App extends React.Component {
         }
     }
 
+    ComponentDetailTransaction = ({ match }) => {
+        if (match.params.id !== "") {
+            return (
+                <TransactionDetail
+                    id={match.params.id}
+                    />
+            )
+        }
+    }
+
     render() {
         return (
             <BrowserRouter>
@@ -66,6 +78,18 @@ class App extends React.Component {
                     <Route 
                         path="/store/:code"
                         component={this.ComponentDetailBook}
+                        />
+
+                    <Route 
+                        path="/transaction/:id"
+                        component={this.ComponentDetailTransaction}
+                        exact
+                        />
+
+                    <Route 
+                        path="/mycorner"
+                        component={UserCorner}
+                        exact
                         />
 
                     <Route path='/transaction' component={Transaction} exact/>
