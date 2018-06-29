@@ -3,7 +3,7 @@ import React from 'react';
 import {Grid, Row, Col, Modal, Tab, Tabs, Image, Label, Well, Badge, ButtonGroup, Button, Panel, FormGroup, 
     FormControl, ControlLabel, Alert, Glyphicon, ButtonToolbar, Dropdown, MenuItem, Checkbox} from 'react-bootstrap';
 
-import Geocode from "react-geocode";
+import Geocode from "./Utils/Geocode";
 
 
 function prepareData(details) {        
