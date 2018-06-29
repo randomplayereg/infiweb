@@ -6,7 +6,7 @@ const MyMapComponent = compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAQDOsz5Zdwks9zGw9lfDfW4LiNaP_tIV0&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }} />,
-        containerElement: <div style={{ height: `400px`, width: `600px` }} />,
+        containerElement: <div style={{ height: `400px`, width: `100%` }} />,
         mapElement: <div style={{ height: `100%` }} />,
     }),
     withScriptjs,
@@ -23,6 +23,7 @@ const MyMapComponent = compose(
         defaultZoom={15}
         defaultCenter={{ lat: 10.773659, lng: 106.694152}}
         center={{ lat: props.lat, lng: props.lng}}
+        onClick={props.test}
     >
         {/*{props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}*/}
         <Marker 
@@ -79,14 +80,19 @@ class MyFancyComponent extends React.PureComponent {
     }
 
     render() {
+
+
+
         return (
-            <MyMapComponent
-                isMarkerShown={this.state.isMarkerShown}
-                onMarkerClick={this.handleMarkerClick}
-                lat={this.state.lat}
-                lng={this.state.lng}
-                geodude={this.geodude}
-            />
+            <div>
+                <MyMapComponent
+                    isMarkerShown={this.state.isMarkerShown}
+                    onMarkerClick={this.handleMarkerClick}
+                    lat={this.state.lat}
+                    lng={this.state.lng}
+                    geodude={this.geodude}
+                />
+            </div>
         )
     }
 }

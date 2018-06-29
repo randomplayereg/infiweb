@@ -202,6 +202,18 @@ class Instance extends React.Component {
         const styles = {
             container: {
                 height: '430px'
+            },
+            backend: {
+                position: 'relative'
+                // top: '0',
+                // left: '0',
+                // width: '100%',
+                // height: '100%'
+            },
+            frontend: {
+                position: 'absolute',
+                top: '50%',
+                left: '50%'
             }
         };
 
@@ -215,15 +227,21 @@ class Instance extends React.Component {
                 >
                 <Grid fluid>
                     <Row>
-                        <Col md={6}>
+                        <Col md={6} style={styles.backend}>
                             {this.state.userAddress && 
-                                <MyFancyComponent
-                                    userAddress={this.state.userAddress}
-                                    // userAddress={'Dong Hoi, Quang Binh'}
-                                />
+                                [
+                                    <MyFancyComponent
+                                        userAddress={this.state.userAddress}
+                                        style={styles.backend}
+                                        // userAddress={'Dong Hoi, Quang Binh'}
+                                    />,                                                            
+                                    <div style={styles.frontend}>
+                                        X
+                                    </div>
+                                ]
                             }
                         </Col>
-                        <Col>
+                        <Col md={6}>
                             <h1>{this.state.userAddress}</h1>
                         </Col>
                     </Row>

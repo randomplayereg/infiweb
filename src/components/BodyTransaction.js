@@ -67,7 +67,7 @@ class BodyTransaction extends React.Component {
                     <main className="card__description">
                         {item.requester_name} đang muốn mượn
                     </main>
-                    <a href={``} className="button">Call to Action</a>
+                    <a href={`/transaction/${item.id}`} className="button">Call to Action</a>
                 </article>
             )
         });
