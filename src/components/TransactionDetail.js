@@ -3,6 +3,9 @@ import React from 'react';
 import {Grid, Row, Col, Modal, Tab, Tabs, Image, Label, Well, Badge, ButtonGroup, Button, Panel, FormGroup, 
     FormControl, ControlLabel, Alert, Glyphicon, ButtonToolbar, Dropdown, MenuItem, Checkbox} from 'react-bootstrap';
 
+import Geocode from "react-geocode";
+
+
 function prepareData(details) {        
     var formBody = [];
     for (var property in details) {
@@ -17,7 +20,7 @@ function prepareData(details) {
 class SelectionControl extends React.Component {
     constructor(props) {
         super(props);
-    }
+    }   
 
     renderItems() {
         const data = this.props.items;
@@ -71,6 +74,23 @@ class TransactionDetail extends React.Component {
 
         this.fetchTransaction();        
         this.fetchLocationCodeData();
+
+        Geocode.setApiKey("AIzaSyAQDOsz5Zdwks9zGw9lfDfW4LiNaP_tIV0");
+
+        // Enable or disable logs. Its optional.
+        Geocode.enableDebug();
+    
+        // Get address from latidude & longitude.
+        Geocode.fromLatLng("48.8583701", "2.2922926")
+            .then(
+                response => {
+                    const address = response.results[0].formatted_address;
+                    console.log(address);
+                },
+                error => {
+                    console.error(error);
+                }
+            );
     }
 
     handleClose() {
