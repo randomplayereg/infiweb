@@ -232,7 +232,13 @@ class Instance extends React.Component {
                                 [
                                     <MyFancyComponent
                                         userAddress={this.state.userAddress}
+                                        // height={`400px`}
                                         style={styles.backend}
+
+                                        showMarker={true}
+                                        routeFinding={false}
+
+                                        onRef={ref => this.child = ref}
                                         // userAddress={'Dong Hoi, Quang Binh'}
                                     />,                                                            
                                     <div style={styles.frontend}>
