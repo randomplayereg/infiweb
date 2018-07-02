@@ -21,6 +21,26 @@ function prepareData(details) {
     return formBody;
 }
 
+function convertTime(raw) {
+    // Create a new JavaScript Date object based on the timestamp
+    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+    // parseFloat(raw);
+    var date = new Date(raw*1000);
+
+    date.setDate(date.getDate() - 1);
+// Hours part from the timestamp
+    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+// Minutes part from the timestamp
+    var month = date.getMonth() + 1;
+    month = month < 10 ? "0" + month : month;
+// Seconds part from the timestamp
+    var year = date.getFullYear();
+
+// Will display time in 10:30:23 format
+    var formattedTime = year + '-' + month + '-' + day;
+    return formattedTime;
+}
+
 const DirectionPop = (props) => {
 
     const styles = {
@@ -140,7 +160,7 @@ const OwnerList = (props) => {
     );
 
     return(
-        <div>
+        <div id='ownerList'>
             {stack}
         </div>
     )
@@ -331,7 +351,9 @@ class VerrattiW extends React.Component {
 
         return(
             <div>
-                <Modal show={this.state.show} onHide={this.handleClose} backdrop={"static"}>
+                <Modal show={this.state.show} onHide={this.handleClose} backdrop={"static"}
+                       style={{marginTop: '400px'}}
+                >
                     <Modal.Body>
                         <ProgressCircle
                             color={'#9b859b'}
@@ -390,15 +412,27 @@ class VerrattiW extends React.Component {
                             <h5>{this.state.original.number_exchange} book(s) are available now</h5>
                             <Button
                                 style={{
-                                    float: 'right',
+                                    margin: '8px 8px',
+                                    borderRadius: '13%',
+                                    border: 'solid 1px #9b859b',
+                                    color: '#9b859b'
                                 }}>
                                 Add to my book
                             </Button>
 
                             <Button
                                 style={{
-                                    float: 'right',
-                                }}>
+                                    margin: '8px 8px',
+                                    borderRadius: '13%',
+                                    border: 'solid 1px #9b859b',
+                                    color: '#9b859b'
+                                }}
+                                onClick={
+                                    ()=>{
+                                        document.getElementById('ownerList').scrollIntoView();
+                                    }
+                                }
+                            >
                                 Get this book
                             </Button>
                         </Col>
@@ -407,12 +441,16 @@ class VerrattiW extends React.Component {
                     {this.state && this.state.original &&
                     <Row>
                         <Col md={12}>
-                            <Row>
+                            <Row style={{
+                                marginLeft: '16px',
+                                padding: '8px'
+                            }}>
                                 <u>Chi tiết:</u>
                                 <h5>Size: {this.state.original.size_width} x {this.state.original.size_height}</h5>
-                                <h5>Weight: {this.state.original.weight}</h5>
+                                <h5>Weight: {this.state.original.weight} g</h5>
                                 <h5>Total page: {this.state.original.total_page}</h5>
-                                <h5>Ngày xuất bản: {this.state.publish_date}</h5>
+                                {/*<h5>Ngày xuất bản: {this.state.original.publish_date}</h5>*/}
+                                <h5>Ngày xuất bản: {convertTime(this.state.original.publish_date)}</h5>
                                 <u>Tóm tắt:</u>
                                 <h5>{this.state.original.summary}</h5>
                             </Row>

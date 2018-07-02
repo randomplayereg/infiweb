@@ -17,6 +17,7 @@ import Verratti from "./v2/Verratti";
 import VerrattiQ from "./v2/VerrattiQ";
 import VerrattiW from "./v2/VerrattiW";
 import VerrattiC from "./v2/VerrattiC";
+import VerrattiE from "./v2/VerrattiE";
 
 class App extends React.Component {
     ComponentCategory = ({ match }) => {
@@ -127,6 +128,8 @@ class App extends React.Component {
                     <Route path={'/v2/library'} component={VerrattiQ} exact/>
 
                     <Route path={'/v2/library/detail/:code'} component={this.ComponentDetail} exact/>
+
+                    <Route path={'/v2/transaction'} component={VerrattiE} exact />
 
                     <Route path={'/v2/transaction/:id'} component={this.ComponentDMM} exact/>
 

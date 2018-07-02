@@ -12,6 +12,8 @@ import {geolocated} from 'react-geolocated';
 import MyFancyComponent from '../components/MyFancyComponent';
 import NavigationM from "./NavigationM";
 
+import './VerrattiC.css';
+
 function prepareData(details) {
     var formBody = [];
     for (var property in details) {
@@ -21,6 +23,27 @@ function prepareData(details) {
     }
     formBody = formBody.join("&");
     return formBody;
+}
+
+function convertTime(raw) {
+    // Create a new JavaScript Date object based on the timestamp
+    // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+    // parseFloat(raw);
+    var date = new Date(raw*1000);
+
+    //TODO: sua ngay
+    // date.setDate(date.getDate());
+// Hours part from the timestamp
+    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+// Minutes part from the timestamp
+    var month = date.getMonth() + 1;
+    month = month < 10 ? "0" + month : month;
+// Seconds part from the timestamp
+    var year = date.getFullYear();
+
+// Will display time in 10:30:23 format
+    var formattedTime = year + '-' + month + '-' + day;
+    return formattedTime;
 }
 
 const MessageBox = (props) => (
@@ -257,7 +280,7 @@ class VerrattiC extends React.Component {
 
         return (
             <Row style={{marginTop: '13px'}}>
-                <div style={{float: 'right'}}>
+                <div>
                     <Button bsStyle="danger" bsSize="large" onClick={cancelRequest}>
                         Cancel
                     </Button>
@@ -425,13 +448,23 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
                             Show direction
                         </Button>
+                    </div>
+                </Row>,
+
+                <Row>
+                    <div>
                         <Button bsStyle="success" bsSize="large" onClick={this.R4_acceptRequest}>
                             Accept
                         </Button>
+                        </div>
+                </Row>,
+
+                <Row>
+                    <div>
                         <Button bsStyle="primary" bsSize="large" onClick={this.R4_declineRequest}>
                             Decline
                         </Button>
@@ -485,7 +518,7 @@ class VerrattiC extends React.Component {
         return(
             [
             <Row style={{marginTop: '13px'}}>
-                <div style={{float: 'right'}}>
+                <div >
                     <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
                         Show direction
                     </Button>
@@ -594,7 +627,7 @@ class VerrattiC extends React.Component {
 
 
                 <Row>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
                             Xem trên bản đồ
                         </Button>
@@ -706,15 +739,15 @@ class VerrattiC extends React.Component {
             </Row>,
 
             <Row>
-                <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
             </Row>,
 
             <Row>
-                <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
             </Row>,
 
             <Row>
-                <div style={{float: 'right'}}>
+                <div >
                     <Button bsStyle="primary" bsSize="large" onClick={this.R8_requestReturn}>
                         Tôi muốn trả sách
                     </Button>
@@ -847,15 +880,15 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                    <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                    <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
                             Show direction
                         </Button>
@@ -923,15 +956,15 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                    <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                    <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
                 </Row>,
 
                 <Row style={{marginTop: '13px'}}>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
                             Show direction
                         </Button>
@@ -992,11 +1025,11 @@ class VerrattiC extends React.Component {
             </Row>,
 
             <Row>
-                <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
             </Row>,
 
             <Row>
-                <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
             </Row>,
             ]
         )
@@ -1247,7 +1280,7 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsSize="large" bsStyle="success" onClick={this.O3_acceptRequest}>
                             Chấp nhận
                         </Button>
@@ -1414,11 +1447,11 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                    <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                    <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
                 </Row>
             ]
         )
@@ -1580,7 +1613,7 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsSize="large" bsStyle="success" onClick={this.O11_acceptReturn}>
                             Chấp nhận
                         </Button>
@@ -1608,11 +1641,11 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                    <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                    <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
                 </Row>
             ]
         )
@@ -1680,15 +1713,15 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                    <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                    <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <div style={{float: 'right'}}>
+                    <div >
                         <Button bsSize="large" bsStyle="success" onClick={this.O16_retrieveBook}>
                             Chấp nhận
                         </Button>
@@ -1713,11 +1746,11 @@ class VerrattiC extends React.Component {
                 </Row>,
 
                 <Row>
-                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                    <h4>Ngày bắt đầu: {`${convertTime(data.time_start_exchange)}`}</h4>
                 </Row>,
 
                 <Row>
-                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                    <h4>Ngày trả: {`${convertTime(data.time_expire_exchange)}`}</h4>
                 </Row>
             ]
         )
