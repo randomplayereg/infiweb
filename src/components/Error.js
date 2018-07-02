@@ -2,7 +2,9 @@ import React from 'react';
 
 const Error = () => (
     <div>
-        <p>Not Found</p>
+        <h1 style={{
+            margin: 'auto'
+        }}>Trang mà bạn tìm kiếm có lẽ không nằm ở đây!</h1>
     </div>
 );
 

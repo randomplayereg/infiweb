@@ -117,12 +117,12 @@ class MyFancyComponent extends React.PureComponent {
         super(props);
 
         this.geodude = this.geodude.bind(this);
+        this.graveler = this.graveler.bind(this);
     }
 
     state = {
-        isMarkerShown: true,
-        lat: 10.773659,
-        lng: 106.694152
+        lat: this.props.superLat ? this.props.superLat : 10.773659,
+        lng: this.props.superLng ? this.props.superLng : 106.694152
     }
 
     componentDidMount() {
@@ -148,9 +148,12 @@ class MyFancyComponent extends React.PureComponent {
     }
 
     geodude() {
-        let geocoder = new window.google.maps.Geocoder();
 
         var self = this;
+
+        let geocoder = new window.google.maps.Geocoder();
+
+
         geocoder.geocode( { 'address': this.props.userAddress}, function(results, status) {
             if (status == 'OK') {
                 const location = results[0].geometry.location;
@@ -163,6 +166,10 @@ class MyFancyComponent extends React.PureComponent {
                 console.log('Geocode was not successful for the following reason: ' + status);
             }
         });
+    }
+
+    graveler() {
+
     }
 
     investigation() {
@@ -178,23 +185,61 @@ class MyFancyComponent extends React.PureComponent {
 
         return (
             <div>
-                <MyMapComponent
+                {this.props.superLat && this.props.superLng ?
+                    <MyMapComponent
 
-                    showMarker={this.props.showMarker}
+                        showMarker={this.props.showMarker}
 
-                    routeFinding={this.props.routeFinding}
-                    origin={this.props.origin}
-                    destination={this.props.destination}
+                        routeFinding={this.props.routeFinding}
+                        origin={this.props.origin}
+                        destination={this.props.destination}
 
-                    onMarkerClick={this.handleMarkerClick}
-                    lat={this.state.lat}
-                    lng={this.state.lng}
-                    geodude={this.geodude}
+                        onMarkerClick={this.handleMarkerClick}
+                        lat={this.props.superLat}
+                        lng={this.props.superLng}
+                        geodude={this.graveler}
 
-                    onRef={ref => this.child = ref}
+                        onRef={ref => this.child = ref}
 
-                    // height={this.props.height}
-                />
+                        // height={this.props.height}
+                    />
+                    :
+                    <MyMapComponent
+
+                        showMarker={this.props.showMarker}
+
+                        routeFinding={this.props.routeFinding}
+                        origin={this.props.origin}
+                        destination={this.props.destination}
+
+                        onMarkerClick={this.handleMarkerClick}
+                        lat={this.state.lat}
+                        lng={this.state.lng}
+                        geodude={this.geodude}
+
+                        onRef={ref => this.child = ref}
+
+                        // height={this.props.height}
+                    />
+
+                }
+                {/*<MyMapComponent*/}
+
+                    {/*showMarker={this.props.showMarker}*/}
+
+                    {/*routeFinding={this.props.routeFinding}*/}
+                    {/*origin={this.props.origin}*/}
+                    {/*destination={this.props.destination}*/}
+
+                    {/*onMarkerClick={this.handleMarkerClick}*/}
+                    {/*lat={this.state.lat}*/}
+                    {/*lng={this.state.lng}*/}
+                    {/*geodude={this.geodude}*/}
+
+                    {/*onRef={ref => this.child = ref}*/}
+
+                    {/*// height={this.props.height}*/}
+                {/*/>*/}
 
                 {/* <MyOtherMapComponent
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAQDOsz5Zdwks9zGw9lfDfW4LiNaP_tIV0&libraries=geometry,drawing,places"

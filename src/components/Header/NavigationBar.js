@@ -31,6 +31,9 @@ class NavigationBar extends React.Component {
                 break;
             case "map_view":
                 break;
+            case "corner":
+                window.location.replace('/mycorner');
+                break;
             default:
                 break;
         }

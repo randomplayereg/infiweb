@@ -1,15 +1,18 @@
 import React from 'react';
 
-import {Grid, Row, Col, Modal, Tab, Tabs, Image, Label, Well, Badge, ButtonGroup, Button, Panel, FormGroup, 
+import {Grid, Row, Col, Modal, Tab, Tabs, Image, Label, Well, Badge, ButtonGroup, Button, Panel, FormGroup,
     FormControl, ControlLabel, Alert, Glyphicon, ButtonToolbar, Dropdown, MenuItem, Checkbox} from 'react-bootstrap';
+
+import { Box, Text } from 'react-desktop/macOs';
 
 import Geocode from "./Utils/Geocode";
 
 import {geolocated} from 'react-geolocated';
 
-import MyFancyComponent from './MyFancyComponent';
+import MyFancyComponent from '../components/MyFancyComponent';
+import NavigationM from "./NavigationM";
 
-function prepareData(details) {        
+function prepareData(details) {
     var formBody = [];
     for (var property in details) {
         var encodedKey = encodeURIComponent(property);
@@ -22,19 +25,19 @@ function prepareData(details) {
 
 const MessageBox = (props) => (
     <FormGroup>
-        <ControlLabel>Lời nhắn: </ControlLabel>
+        <ControlLabel><h4>Bạn có thể nhắn tin trả lời vào bên dưới: </h4></ControlLabel>
         <FormControl
             componentClass="textarea"
-            placeholder="Gui tin nhắn trả lời"
+            placeholder="Viết một tin nhắn"
             onChange={props.onChange}
-            />
+        />
     </FormGroup>
 )
 
 class SelectionControl extends React.Component {
     constructor(props) {
         super(props);
-    }   
+    }
 
     renderItems() {
         const data = this.props.items;
@@ -61,7 +64,7 @@ class SelectionControl extends React.Component {
     }
 }
 
-class TransactionDetail extends React.Component {
+class VerrattiC extends React.Component {
 
     constructor(props, context) {
         super(props, context);
@@ -72,12 +75,12 @@ class TransactionDetail extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleShowDirection = this.handleShowDirection.bind(this);
         this.handleCloseDirection = this.handleCloseDirection.bind(this);
-        
+
         this.handleChangeStreetNr = this.handleChangeStreetNr.bind(this);
         this.handleChangeDistrict = this.handleChangeDistrict.bind(this);
         this.handleChangeWard = this.handleChangeWard.bind(this);
         this.handleChangeCity = this.handleChangeCity.bind(this);
-    
+
         this.state = {
             customLocationShow: false,
             streetNr: '',
@@ -92,6 +95,7 @@ class TransactionDetail extends React.Component {
 
         this.fetchLocationCodeData = this.fetchLocationCodeData.bind(this);
         this.fetchTransaction = this.fetchTransaction.bind(this);
+        this.fetchBetaLocation = this.fetchBetaLocation.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTabChange = this.handleTabChange.bind(this);
@@ -121,8 +125,8 @@ class TransactionDetail extends React.Component {
         this.R12_acceptRequest = this.R12_acceptRequest.bind(this);
         this.R12_declineRequest = this.R12_declineRequest.bind(this);
 
-        this.fetchTransaction();        
-        this.fetchLocationCodeData();        
+        this.fetchTransaction();
+        this.fetchLocationCodeData();
     }
 
     messageChange(e) {
@@ -133,7 +137,7 @@ class TransactionDetail extends React.Component {
     }
 
     handleClose() {
-        this.setState({ 
+        this.setState({
             customLocationShow: false
         });
     }
@@ -145,16 +149,16 @@ class TransactionDetail extends React.Component {
     }
 
     handleShow() {
-        this.setState({ 
+        this.setState({
             customLocationShow: true
         });
     }
 
     handleShowDirection() {
         if (this.state.important) {
-            this.setState({ 
-                directionShow: true 
-            });    
+            this.setState({
+                directionShow: true
+            });
         } else {
             alert('Hay chon dia chi xuat phat cua ban');
         }
@@ -172,13 +176,17 @@ class TransactionDetail extends React.Component {
                 }
             }
         )
-        .then((response) => response.json())
-        .then((json => {
-            console.log(json);
-            this.setState({
-                transactionData: json
-            });
-        }))
+            .then((response) => response.json())
+            .then((json => {
+                console.log(json);
+                this.setState({
+                    transactionData: json
+                });
+
+                if (json.requester_email === localStorage.getItem('uid')){
+                    this.fetchBetaLocation();
+                };
+            }))
     }
 
     renderBookInfo() {
@@ -199,13 +207,13 @@ class TransactionDetail extends React.Component {
         )
     }
 
-    
+
 
     renderR3() {
         const data = this.state.transactionData;
 
         function cancelRequest() {
-            
+
             let url = `https://thedung.pythonanywhere.com/api/transaction/cancel-request`;
 
             const body = prepareData(
@@ -226,34 +234,35 @@ class TransactionDetail extends React.Component {
                     body: body
                 }
             )
-            .then(
-                (response) => {
-                    console.log(response);
+                .then(
+                    (response) => {
+                        console.log(response);
 
-                    // TODO: check success repsonse
-                    if (true) {
-                        window.location.reload();
-                    }
+                        // TODO: check success repsonse
+                        if (true) {
+                            window.location.reload();
+                        }
 
-                    return response.json()
-                }
-            )
-            .then(
-                (
-                    json => {
-                        console.log(json);
+                        return response.json()
                     }
                 )
-            )
+                .then(
+                    (
+                        json => {
+                            console.log(json);
+                        }
+                    )
+                )
         }
 
         return (
-            <div>
-                <h1>Dang cho hoi am</h1>
-                <Button bsStyle="danger" onClick={cancelRequest}>
-                    Cancel
-                </Button>
-            </div>
+            <Row style={{marginTop: '13px'}}>
+                <div style={{float: 'right'}}>
+                    <Button bsStyle="danger" bsSize="large" onClick={cancelRequest}>
+                        Cancel
+                    </Button>
+                </div>
+            </Row>
         )
     }
 
@@ -261,7 +270,7 @@ class TransactionDetail extends React.Component {
 
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -288,26 +297,26 @@ class TransactionDetail extends React.Component {
                 body: body
             }
         )
-        .then(
-            (response) => {
-                return response.json()
-            }
-        )
-        .then(
-            (
-                json => {
-                    console.log(json);
-                    window.location.reload();
+            .then(
+                (response) => {
+                    return response.json()
                 }
             )
-        )
+            .then(
+                (
+                    json => {
+                        console.log(json);
+                        window.location.reload();
+                    }
+                )
+            )
     }
 
     R4_declineRequest() {
 
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -349,51 +358,93 @@ class TransactionDetail extends React.Component {
             )
     }
 
+    fetchBetaLocation() {
+        const currentEmail = localStorage.getItem('uid');
+        const token = `Token ${localStorage.getItem('token')}`;
+
+        let url = `https://thedung.pythonanywhere.com/api/location/user/${currentEmail}/3`;
+        fetch(
+            url,
+            {
+                method: "GET",
+                headers: {
+                    "Authorization" : token
+                }
+            }
+        )
+            .then(
+                (response) => {
+                    return response.json()
+                }
+            )
+            .then(
+                (
+                    json => {
+                        console.log(json);
+                        this.setState({
+                            address: {
+                                important: {
+                                    location_code: json.code,
+                                    detail: json.detail,
+                                    type: json.type,
+                                    lat: json.lat,
+                                    lng: json.lng
+                                },
+                                toString: `${json.detail}, ${json.ward}, ${json.district}, ${json.city}, ${json.country}`
+                            },
+                            important: {
+                                location_code: json.code,
+                                detail: json.detail,
+                                type: json.type,
+                                lat: json.lat,
+                                lng: json.lng
+                            }
+                        });
+                        console.log(this.state.address);
+                    }
+                )
+            )
+    }
+
     renderR4() {
 
         const data = this.state.transactionData;
         const ownerLocation = data.location;
-        
+
 
         return(
-            <div>
-                <MessageBox
-                    onChange={this.messageChange}
+            [
+                <Row>
+                    <MessageBox
+                        onChange={this.messageChange}
                     />
+                </Row>,
 
-                <h1>Nguoi muon gui dia chi nhan sach</h1>
-                <h2>Tin nhan Element</h2>
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
 
-                <h2>Chon dia chi xuat phat cua ban: </h2>
-                <ButtonGroup>
-                    <Button onClick={this.pickProfileLocation}> Su dung dia chi profile</Button>
-                    <Button onClick={this.pickDeviceLocation}> Su dung dia chi may</Button>
-                    <Button onClick={this.customizeDeviceLocation}> Su dung dia chi may (thay doi)</Button>
-                </ButtonGroup>
+                <Row>
+                    <div style={{float: 'right'}}>
+                        <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
+                            Show direction
+                        </Button>
+                        <Button bsStyle="success" bsSize="large" onClick={this.R4_acceptRequest}>
+                            Accept
+                        </Button>
+                        <Button bsStyle="primary" bsSize="large" onClick={this.R4_declineRequest}>
+                            Decline
+                        </Button>
+                    </div>
+                </Row>,
 
-                <h2>Dia chi xuat phat: {this.state && this.state.address && this.state.address.toString} </h2>                
-                <h2>Dia chi lay sach: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h2>
-
-
-                <Button bsStyle="info" onClick={this.handleShowDirection}>
-                    Show direction
-                </Button>
-
-
-
-                <Button bsStyle="success" onClick={this.R4_acceptRequest}>
-                    Accept
-                </Button>
-                <Button bsStyle="danger" onClick={this.R4_declineRequest}>
-                    Decline
-                </Button>
-
-                {this.state && this.state.important && this.state.address &&
+                <Row>
+                    {this.state && this.state.important && this.state.address &&
                     <Modal show={this.state.directionShow} onHide={this.handleCloseDirection}>
 
                         <Modal.Header closeButton>
                             <Modal.Title>Xem quang duong di</Modal.Title>
-                        </Modal.Header>                    
+                        </Modal.Header>
                         <Modal.Body>
                             <MyFancyComponent
                                 showMarker={false}
@@ -413,32 +464,76 @@ class TransactionDetail extends React.Component {
                                 }}
 
                                 onRef={ref => this.child = ref}
-                                />
+                            />
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={this.handleCloseDirection}>Close</Button>
                         </Modal.Footer>
 
                     </Modal>
-                }
-
-                {this.renderCustomLocationModal()}
-            </div>
+                    }
+                </Row>
+                ]
         )
     }
 
     renderR15() {
+
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+
         return(
-            <div>
-                <h1>Doi nguoi cho muon chuyen trang thai sach thanh sang sang</h1>
-            </div>
+            [
+            <Row style={{marginTop: '13px'}}>
+                <div style={{float: 'right'}}>
+                    <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
+                        Show direction
+                    </Button>
+                </div>
+            </Row>,
+            <Row>
+                {this.state && this.state.important && this.state.address &&
+                <Modal show={this.state.directionShow} onHide={this.handleCloseDirection}>
+
+                    <Modal.Header closeButton>
+                        <Modal.Title>Xem quang duong di</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <MyFancyComponent
+                            showMarker={false}
+
+                            routeFinding={true}
+
+                            userAddress={this.state.address.toString}
+
+                            origin={{
+                                lat: this.state.important.lat,
+                                lng: this.state.important.lng
+                            }}
+
+                            destination={{
+                                lat: ownerLocation.lat,
+                                lng: ownerLocation.lng
+                            }}
+
+                            onRef={ref => this.child = ref}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={this.handleCloseDirection}>Close</Button>
+                    </Modal.Footer>
+
+                </Modal>
+                }
+            </Row>
+            ]
         )
     }
 
     R6_tookBook() {
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -486,28 +581,31 @@ class TransactionDetail extends React.Component {
         const ownerLocation = data.location;
 
         return(
-            <div>
-                <h1>Toi da lay cuon sach chua nhi?</h1>
-                {this.renderCustomLocationModal()}
-                <ButtonGroup>
-                    <Button onClick={this.pickProfileLocation}> Su dung dia chi profile</Button>
-                    <Button onClick={this.pickDeviceLocation}> Su dung dia chi may</Button>
-                    <Button onClick={this.customizeDeviceLocation}> Su dung dia chi may (thay doi)</Button>
-                </ButtonGroup>
+            [
+                <Row>
+                    <MessageBox
+                        onChange={this.messageChange}
+                    />
+                </Row>,
 
-                <h2>Dia chi xuat phat: {this.state && this.state.address && this.state.address.toString} </h2>
-                <h2>Dia chi lay sach: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h2>
-
-                <Button bsStyle="info" onClick={this.handleShowDirection}>
-                    Show direction
-                </Button>
-                <Button bsStyle="success" onClick={this.R6_tookBook}>
-                    I took the book!
-                </Button>
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
 
 
-                {/*MODAL XEM CHI DUONG*/}
-                {this.state && this.state.important && this.state.address &&
+                <Row>
+                    <div style={{float: 'right'}}>
+                        <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
+                            Xem trên bản đồ
+                        </Button>
+                        <Button bsStyle="success" bsSize="large" onClick={this.R6_tookBook}>
+                            Tôi đã lấy sách
+                        </Button>
+                    </div>
+                </Row>,
+
+                <Row>
+                    {this.state && this.state.important && this.state.address &&
                     <Modal show={this.state.directionShow} onHide={this.handleCloseDirection}>
 
                         <Modal.Header closeButton>
@@ -539,16 +637,16 @@ class TransactionDetail extends React.Component {
                         </Modal.Footer>
 
                     </Modal>
-                }
-
-            </div>
+                    }
+                </Row>
+            ]
         )
     }
 
     R8_requestReturn() {
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -591,28 +689,55 @@ class TransactionDetail extends React.Component {
     }
 
     renderR8() {
+
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+
         return(
-            <div>
-                <h1>Sach hay vleu, ay dm quen tra</h1>
-                <Button bsStyle="info" onClick={this.R8_requestReturn}>
-                    I want to return the book
-                </Button>
-            </div>
+            [
+            <Row>
+                <MessageBox
+                    onChange={this.messageChange}
+                />
+            </Row>,
+
+            <Row>
+                <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+            </Row>,
+
+            <Row>
+                <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+            </Row>,
+
+            <Row>
+                <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+            </Row>,
+
+            <Row>
+                <div style={{float: 'right'}}>
+                    <Button bsStyle="primary" bsSize="large" onClick={this.R8_requestReturn}>
+                        Tôi muốn trả sách
+                    </Button>
+                </div>
+            </Row>,
+            ]
         )
     }
 
     renderR11(){
         return(
-            <div>
-                <h1>Cho y kien chu sach, xem dc quyen tra sach ko</h1>                
-            </div>
+            [
+                <Row>
+
+                </Row>
+            ]
         )
     }
 
     R12_acceptRequest() {
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -657,7 +782,7 @@ class TransactionDetail extends React.Component {
     R12_declineRequest() {
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -701,97 +826,186 @@ class TransactionDetail extends React.Component {
 
     renderR12() {
         const data = this.state.transactionData;
-        const ownerLocation = data.location_return;
+        const ownerLocation = data.location;
+        const returnLocation = data.location_return;
+
 
         return(
-            <div>
-                <MessageBox
-                    onChange={this.messageChange}
-                />
-                <h1>Nguoi muon gui dia chi tra sach</h1>
-                <h2>Tin nhan Element</h2>
+            [
+                <Row>
+                    <MessageBox
+                        onChange={this.messageChange}
+                    />
+                </Row>,
 
-                <h2>Chon dia chi xuat phat cua ban: </h2>
-                {this.renderCustomLocationModal()}
-                <ButtonGroup>
-                    <Button onClick={this.pickProfileLocation}> Su dung dia chi profile</Button>
-                    <Button onClick={this.pickDeviceLocation}> Su dung dia chi may</Button>
-                    <Button onClick={this.customizeDeviceLocation}> Su dung dia chi may (thay doi)</Button>
-                </ButtonGroup>
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
 
-                <h2>Dia chi xuat phat: {this.state && this.state.address && this.state.address.toString} </h2>
-                <h2>Dia chi lay sach: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h2>
+                <Row>
+                    <h4>Địa điểm trả: {`${returnLocation.detail}, ${returnLocation.ward}, ${returnLocation.district}, ${returnLocation.city}`}</h4>
+                </Row>,
 
+                <Row>
+                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                </Row>,
 
-                <Button bsStyle="info" onClick={this.handleShowDirection}>
-                    Show direction
-                </Button>
+                <Row>
+                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                </Row>,
 
-                <Button bsStyle="success" onClick={this.R12_acceptRequest}>
-                    Accept
-                </Button>
-                <Button bsStyle="danger" onClick={this.R12_declineRequest}>
-                    Decline
-                </Button>
+                <Row>
+                    <div style={{float: 'right'}}>
+                        <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
+                            Show direction
+                        </Button>
+                        <Button bsStyle="success" bsSize="large" onClick={this.R12_acceptRequest}>
+                            Accept
+                        </Button>
+                        <Button bsStyle="primary" bsSize="large" onClick={this.R12_declineRequest}>
+                            Decline
+                        </Button>
+                    </div>
+                </Row>,
 
-                {this.state && this.state.important && this.state.address &&
-                <Modal show={this.state.directionShow} onHide={this.handleCloseDirection}>
+                <Row>
+                    {this.state && this.state.important && this.state.address &&
+                    <Modal show={this.state.directionShow} onHide={this.handleCloseDirection}>
 
-                    <Modal.Header closeButton>
-                        <Modal.Title>Xem quang duong di</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <MyFancyComponent
-                            showMarker={false}
+                        <Modal.Header closeButton>
+                            <Modal.Title>Xem quang duong di</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <MyFancyComponent
+                                showMarker={false}
 
-                            routeFinding={true}
+                                routeFinding={true}
 
-                            userAddress={this.state.address.toString}
+                                userAddress={this.state.address.toString}
 
-                            origin={{
-                                lat: this.state.important.lat,
-                                lng: this.state.important.lng
-                            }}
+                                origin={{
+                                    lat: this.state.important.lat,
+                                    lng: this.state.important.lng
+                                }}
 
-                            destination={{
-                                lat: ownerLocation.lat,
-                                lng: ownerLocation.lng
-                            }}
+                                destination={{
+                                    lat: returnLocation.lat,
+                                    lng: returnLocation.lng
+                                }}
 
-                            onRef={ref => this.child = ref}
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={this.handleCloseDirection}>Close</Button>
-                    </Modal.Footer>
+                                onRef={ref => this.child = ref}
+                            />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.handleCloseDirection}>Close</Button>
+                        </Modal.Footer>
 
-                </Modal>
-                }
-
-            </div>
+                    </Modal>
+                    }
+                </Row>
+            ]
         )
     }
 
     renderR16() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+        const returnLocation = data.location_return;
+
         return(
-            <div>
-                <h1>Dong y voi dia diem chu sach dua ra, dang cho chu sach xac nhan da lya sach chua</h1>
-            </div>
+            [
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Địa điểm trả: {`${returnLocation.detail}, ${returnLocation.ward}, ${returnLocation.district}, ${returnLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                </Row>,
+
+                <Row style={{marginTop: '13px'}}>
+                    <div style={{float: 'right'}}>
+                        <Button bsStyle="warning" bsSize="large" onClick={this.handleShowDirection}>
+                            Show direction
+                        </Button>
+                    </div>
+                </Row>,
+
+                <Row>
+                    {this.state && this.state.important && this.state.address &&
+                    <Modal show={this.state.directionShow} onHide={this.handleCloseDirection}>
+
+                        <Modal.Header closeButton>
+                            <Modal.Title>Xem quang duong di</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <MyFancyComponent
+                                showMarker={false}
+
+                                routeFinding={true}
+
+                                userAddress={this.state.address.toString}
+
+                                origin={{
+                                    lat: this.state.important.lat,
+                                    lng: this.state.important.lng
+                                }}
+
+                                destination={{
+                                    lat: returnLocation.lat,
+                                    lng: returnLocation.lng
+                                }}
+
+                                onRef={ref => this.child = ref}
+                            />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.handleCloseDirection}>Close</Button>
+                        </Modal.Footer>
+
+                    </Modal>
+                    }
+                </Row>
+            ]
         )
     }
 
     renderR14() {
-        return(            
-            <div>
-                <h1>Hoat dong trao doi ket thuc tot dep!</h1>
-            </div>
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+        const returnLocation = data.location_return;
+        return(
+            [
+            <Row>
+                <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+            </Row>,
+
+            <Row>
+                <h4>Địa điểm trả: {`${returnLocation.detail}, ${returnLocation.ward}, ${returnLocation.district}, ${returnLocation.city}`}</h4>
+            </Row>,
+
+            <Row>
+                <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+            </Row>,
+
+            <Row>
+                <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+            </Row>,
+            ]
         )
-    }    
+    }
 
     pickProfileLocation() {
         const currentEmail = localStorage.getItem('uid');
         const token = `Token ${localStorage.getItem('token')}`;
-        
+
         let url = `https://thedung.pythonanywhere.com/api/location/user/${currentEmail}/1`;
         fetch(
             url,
@@ -802,44 +1016,44 @@ class TransactionDetail extends React.Component {
                 }
             }
         )
-        .then(
-            (response) => {
-                return response.json()
-            }
-        )
-        .then(
-            (
-                json => {
-                    console.log(json);
-                    this.setState({
-                        address: {
+            .then(
+                (response) => {
+                    return response.json()
+                }
+            )
+            .then(
+                (
+                    json => {
+                        console.log(json);
+                        this.setState({
+                            address: {
+                                important: {
+                                    location_code: json.code,
+                                    detail: json.detail,
+                                    type: json.type,
+                                    lat: json.lat,
+                                    lng: json.lng
+                                },
+                                toString: `${json.detail}, ${json.ward}, ${json.district}, ${json.city}, ${json.country}`
+                            },
                             important: {
                                 location_code: json.code,
                                 detail: json.detail,
                                 type: json.type,
                                 lat: json.lat,
                                 lng: json.lng
-                            },
-                            toString: `${json.detail}, ${json.ward}, ${json.district}, ${json.city}, ${json.country}`
-                        },
-                        important: {
-                            location_code: json.code,
-                            detail: json.detail,
-                            type: json.type,
-                            lat: json.lat,
-                            lng: json.lng
-                        }
-                    });
-                    console.log(this.state.address)
-                }
+                            }
+                        });
+                        console.log(this.state.address)
+                    }
+                )
             )
-        )
     }
 
     pickDeviceLocation() {
         const currentEmail = localStorage.getItem('uid');
         const token = `Token ${localStorage.getItem('token')}`;
-        
+
         let url = `https://thedung.pythonanywhere.com/api/location/user/${currentEmail}/3`;
         fetch(
             url,
@@ -850,41 +1064,41 @@ class TransactionDetail extends React.Component {
                 }
             }
         )
-        .then(
-            (response) => {
-                return response.json()
-            }
-        )
-        .then(
-            (
-                json => {
-                    if (json.error_code || json.error_message) {
-                        alert(json.error_message);
-                        return;
-                    };
-                    this.setState({
-                        address: {
+            .then(
+                (response) => {
+                    return response.json()
+                }
+            )
+            .then(
+                (
+                    json => {
+                        if (json.error_code || json.error_message) {
+                            alert(json.error_message);
+                            return;
+                        };
+                        this.setState({
+                            address: {
+                                important: {
+                                    location_code: json.code,
+                                    detail: json.detail,
+                                    type: json.type,
+                                    lat: json.lat,
+                                    lng: json.lng
+                                },
+                                toString: `${json.detail}, ${json.ward}, ${json.district}, ${json.city}, ${json.country}`
+                            },
                             important: {
                                 location_code: json.code,
                                 detail: json.detail,
                                 type: json.type,
                                 lat: json.lat,
                                 lng: json.lng
-                            },
-                            toString: `${json.detail}, ${json.ward}, ${json.district}, ${json.city}, ${json.country}`
-                        },
-                        important: {
-                            location_code: json.code,
-                            detail: json.detail,
-                            type: json.type,
-                            lat: json.lat,
-                            lng: json.lng
-                        }
-                    });
-                    console.log(this.state.address)
-                }
+                            }
+                        });
+                        console.log(this.state.address)
+                    }
+                )
             )
-        )
     }
 
     customizeDeviceLocation() {
@@ -892,9 +1106,14 @@ class TransactionDetail extends React.Component {
     }
 
     O3_acceptRequest() {
+        if (!this.state || !this.state.important) {
+            alert('Hãy chọn địa điểm giao sách trước khi trả lời yêu cầu!');
+            return;
+        }
+
         const currentEmail = localStorage.getItem('uid');
 
-        if ((typeof(currentEmail) == undefined) || (currentEmail == "")) {
+        if ((typeof(currentEmail) == "undefined") || (currentEmail == "")) {
             alert('No login');
         };
 
@@ -929,25 +1148,25 @@ class TransactionDetail extends React.Component {
                 body: body
             }
         )
-        .then(
-            (response) => {
-                console.log(response);
+            .then(
+                (response) => {
+                    console.log(response);
 
-                // TODO: check success repsonse
-                if (true) {
-                    window.location.reload();
-                }
+                    // TODO: check success repsonse
+                    if (true) {
+                        window.location.reload();
+                    }
 
-                return response.json()
-            }
-        )
-        .then(
-            (
-                json => {
-                    console.log(json);
+                    return response.json()
                 }
             )
-        )            
+            .then(
+                (
+                    json => {
+                        console.log(json);
+                    }
+                )
+            )
     }
 
     O3_declineRequest() {
@@ -998,37 +1217,56 @@ class TransactionDetail extends React.Component {
     renderO3() {
         const data = this.state.transactionData;
         return(
-            <div>
-                <MessageBox
-                    onChange={this.messageChange}
-                />
-                <h1>Ai request day nhi, de xem xet... De gui no cai dia chi lun xD</h1>
-                <h2>Pick dia chi</h2>
-                {this.renderCustomLocationModal()}
-                <ButtonGroup>
-                    <Button onClick={this.pickProfileLocation}> Su dung dia chi profile</Button>
-                    <Button onClick={this.pickDeviceLocation}> Su dung dia chi may</Button>
-                    <Button onClick={this.customizeDeviceLocation}> Su dung dia chi may (thay doi)</Button>
-                </ButtonGroup>
-                <h2>
-                    Dia chi de xuat: {this.state && this.state.address && this.state.address.toString} 
-                </h2>
-                <h2>Tin nhan Element</h2>
-                <Button bsStyle="success" onClick={this.O3_acceptRequest}>
-                    Accept
-                </Button>
-                <Button bsStyle="danger" onClick={this.O3_declineRequest}>
-                    Decline
-                </Button>
-            </div>
+            [
+                <Row>
+                    <MessageBox
+                        onChange={this.messageChange}
+                    />
+                </Row>,
+
+                <Row>
+                    <h4>Bạn cần thêm địa chỉ </h4>
+                </Row>,
+
+                <Row>
+                </Row>,
+
+                <Row>
+                    {this.renderCustomLocationModal()}
+                    <ButtonGroup>
+                        <Button onClick={this.pickProfileLocation}> Sử dụng địa chỉ cá nhân của tôi</Button>
+                        <Button onClick={this.pickDeviceLocation}> Sử dụng địa chỉ mặc định</Button>
+                        <Button onClick={this.customizeDeviceLocation}> Thêm địa điểm thủ công</Button>
+                    </ButtonGroup>
+                </Row>,
+
+                <Row>
+                    <h4>
+                        Địa điểm nhận: {this.state && this.state.address && this.state.address.toString}
+                    </h4>
+                </Row>,
+
+                <Row>
+                    <div style={{float: 'right'}}>
+                        <Button bsSize="large" bsStyle="success" onClick={this.O3_acceptRequest}>
+                            Chấp nhận
+                        </Button>
+                        <Button bsSize="large" bsStyle="primary" onClick={this.O3_declineRequest}>
+                            Từ chối
+                        </Button>
+                    </div>
+                </Row>
+            ]
         )
     }
 
     renderO4() {
         return(
-            <div>
-                <h1>Cho nguoi muon sach hoi am voi dia chi ma toi da gui</h1>
-            </div>
+            [
+                <Row>
+
+                </Row>
+            ]
         )
     }
 
@@ -1081,14 +1319,22 @@ class TransactionDetail extends React.Component {
     }
 
     renderO15() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
         return(
-            <div>
-                <h1>Nguoi muon dong y dia diem, chuyen sach sang trang thai san sang</h1>
-                <Button bsStyle="success" onClick={this.O15_changeBookStatus}>
-                    Ready
-                </Button>
+            [
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
 
-            </div>
+                <Row>
+                    <div style={{float: 'right', marginTop: '13px'}}>
+                        <Button bsStyle="success" bsSize="large" onClick={this.O15_changeBookStatus}>
+                            Chuyển trạng thái sách sang sẵn sàng
+                        </Button>
+                    </div>
+                </Row>
+            ]
         )
     }
 
@@ -1140,25 +1386,51 @@ class TransactionDetail extends React.Component {
     }
 
     renderO6() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
         return(
-            <div>
-                <h1>Sau khi san sang, co the doi lai khong san sang</h1>
-                <Button bsStyle="danger" onClick={this.O6_notReady}>
-                    Not ready
-                </Button>
-            </div>
+            [
+            <Row>
+                <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+            </Row>,
+            <Row>
+                <div style={{float: 'right', marginTop: '13px'}}>
+                    <Button bsStyle="danger" bsSize="large" onClick={this.O6_notReady}>
+                        Chuyển trạng thái sách về chưa sẵn sàng
+                    </Button>
+                </div>
+            </Row>
+            ]
         )
     }
 
     renderO8() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
         return(
-            <div>
-                <h1>Ok, gio sach no cam roi, dm co bi scam ko ta??? :thinking:</h1>                
-            </div>
+            [
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                </Row>
+            ]
         )
     }
 
     O11_acceptReturn() {
+
+        if (!this.state || !this.state.important) {
+            alert('Hãy chọn địa điểm giao sách trước khi trả lời yêu cầu!');
+            return;
+        }
+
         const currentEmail = localStorage.getItem('uid');
 
         // check bugs
@@ -1278,37 +1550,71 @@ class TransactionDetail extends React.Component {
 
     renderO11() {
         return(
-            <div>
-                <MessageBox
+            [
+                <Row>
+                    <MessageBox
                     onChange={this.messageChange}
-                />
-                <h1>Mun tra sach roi a? De coi...</h1>
-                <h2>Chon dia chi giao dich</h2>
-                <ButtonGroup>
-                    <Button onClick={this.pickProfileLocation}> Su dung dia chi profile</Button>
-                    <Button onClick={this.pickDeviceLocation}> Su dung dia chi may</Button>
-                    <Button onClick={this.customizeDeviceLocation}> Su dung dia chi may (thay doi)</Button>
-                </ButtonGroup>
+                    />
+                </Row>,
 
-                <h2>Dia chi de xuat: {this.state && this.state.address && this.state.address.toString} </h2>
+                <Row>
+                    <h4>Bạn cần thêm địa chỉ </h4>
+                </Row>,
 
-                <Button bsStyle="success" onClick={this.O11_acceptReturn}>
-                    Accept
-                </Button>
-                <Button bsStyle="danger" onClick={this.O11_declineReturn}>
-                    Decline
-                </Button>
+                <Row>
+                </Row>,
 
-                {this.renderCustomLocationModal()}
-            </div>
+                <Row>
+                    {this.renderCustomLocationModal()}
+                    <ButtonGroup>
+                        <Button onClick={this.pickProfileLocation}> Sử dụng địa chỉ cá nhân của tôi</Button>
+                        <Button onClick={this.pickDeviceLocation}> Sử dụng địa chỉ mặc định</Button>
+                        <Button onClick={this.customizeDeviceLocation}> Thêm địa điểm thủ công</Button>
+                    </ButtonGroup>
+                </Row>,
+
+                <Row>
+                    <h4>
+                        Địa điểm nhận sách: {this.state && this.state.address && this.state.address.toString}
+                    </h4>
+                </Row>,
+
+                <Row>
+                    <div style={{float: 'right'}}>
+                        <Button bsSize="large" bsStyle="success" onClick={this.O11_acceptReturn}>
+                            Chấp nhận
+                        </Button>
+                        <Button bsSize="large" bsStyle="primary" onClick={this.O11_declineReturn}>
+                            Từ chối
+                        </Button>
+                    </div>
+                </Row>
+            ]
         )
     }
 
     renderO12() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+        const returnLocation = data.location_return;
         return(
-            <div>
-                <h1>Cho xem ng muon co dong y voi dia diem tra sach ko?</h1>
-            </div>
+            [
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Địa điểm trả: {`${returnLocation.detail}, ${returnLocation.ward}, ${returnLocation.district}, ${returnLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                </Row>
+            ]
         )
     }
 
@@ -1360,21 +1666,60 @@ class TransactionDetail extends React.Component {
     }
 
     renderO16() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+        const returnLocation = data.location_return;
         return(
-            <div>
-                <h1>No tra sach cho minh chua nhi??? D:</h1>
-                <Button bsStyle="success" onClick={this.O16_retrieveBook}>
-                    I got the book back!
-                </Button>
-            </div>
+            [
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Địa điểm trả: {`${returnLocation.detail}, ${returnLocation.ward}, ${returnLocation.district}, ${returnLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                </Row>,
+
+                <Row>
+                    <div style={{float: 'right'}}>
+                        <Button bsSize="large" bsStyle="success" onClick={this.O16_retrieveBook}>
+                            Chấp nhận
+                        </Button>
+                    </div>
+                </Row>
+            ]
         )
     }
 
     renderO14() {
+        const data = this.state.transactionData;
+        const ownerLocation = data.location;
+        const returnLocation = data.location_return;
         return(
-            <div>
-                <h1>Cuoc trao doi da ket thuc tot dep</h1>
-            </div>
+            [
+                <Row>
+                    <h4>Địa điểm nhận: {`${ownerLocation.detail}, ${ownerLocation.ward}, ${ownerLocation.district}, ${ownerLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Địa điểm trả: {`${returnLocation.detail}, ${returnLocation.ward}, ${returnLocation.district}, ${returnLocation.city}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày bắt đầu: {`${data.time_start_exchange}`}</h4>
+                </Row>,
+
+                <Row>
+                    <h4>Ngày trả: {`${data.time_expire_exchange}`}</h4>
+                </Row>
+            ]
         )
     }
 
@@ -1393,7 +1738,7 @@ class TransactionDetail extends React.Component {
                 padding: '0px',
                 marginTop: '0px',
                 marginBottom: '0px'
-            }            
+            }
         }
 
         return (
@@ -1415,12 +1760,12 @@ class TransactionDetail extends React.Component {
                         </Dropdown>
                     </div>
                 </Alert>
-                <FormControl 
-                    componentClass="textarea" 
+                <FormControl
+                    componentClass="textarea"
                     placeholder={`Gửi trả lời cho ${data.requester_name}`}
                     onChange={(e)=> this.setState({ requestMessage: e.target.value})}
                     style={styles.messageBox}
-                    />
+                />
                 <Button bsStyle="info" style={styles.sendButton} onClick={this.sendRequest}>Trả lời</Button>
             </div>
         )
@@ -1443,7 +1788,7 @@ class TransactionDetail extends React.Component {
 
         switch (data.status) {
             case 3:
-                res = (data.requester_email == currentEmail) ? this.renderR3() : this.renderO3(this);
+                res = (data.requester_email == currentEmail) ? this.renderR3() : this.renderO3();
                 break;
             case 4:
                 res = (data.requester_email == currentEmail) ? this.renderR4() : this.renderO4();
@@ -1451,7 +1796,7 @@ class TransactionDetail extends React.Component {
             case 15:
                 res = (data.requester_email == currentEmail) ? this.renderR15() : this.renderO15();
                 break;
-            case 6:                
+            case 6:
                 res = (data.requester_email == currentEmail) ? this.renderR6() : this.renderO6();
                 break;
             case 8:
@@ -1473,22 +1818,17 @@ class TransactionDetail extends React.Component {
                 res = this.renderCanceled();
             default:
                 break;
-        }    
+        }
         return(
-            [
-                <Row>
-                    <Well>{data.last_message == null ? "Nothing here" : data.last_message}</Well>
-                </Row>
-                ,
-                <Row>
-                    {res}
-                    {/* {this.renderActionReplyOne()} */}
-                </Row>           
-            ]
+            // <Row>
+            <div>
+                {res}
+            </div>
+            // </Row>
         )
     }
-    
-    filterBundle(level) {        
+
+    filterBundle(level) {
         const data = this.state.locationData;
         switch (level) {
             case "cities":
@@ -1532,41 +1872,41 @@ class TransactionDetail extends React.Component {
                 }
             }
         )
-        .then(
-            (response) => {
-                return response.json()
-            }
-        )
-        .then(
-            (
-                json => {
-                    this.setState({
-                        locationData: json
-                    });
-                    
-                    this.setState({
-                        city: {
-                            name: json.cities[0].name,
-                            code: json.cities[0].code
-                        },
-                        district: {
-                            name: json.cities[0].districts[0].name,
-                            code: json.cities[0].districts[0].code
-                        },
-                        ward: {
-                            name: json.cities[0].districts[0].wards[0].name,
-                            code: json.cities[0].districts[0].wards[0].code
-                        }
-                    });
-                    
-                    this.setState({
-                        city_items: this.filterBundle("cities"),
-                        district_items: this.filterBundle("districts"),
-                        ward_items: this.filterBundle("wards")
-                    });
+            .then(
+                (response) => {
+                    return response.json()
                 }
             )
-        );
+            .then(
+                (
+                    json => {
+                        this.setState({
+                            locationData: json
+                        });
+
+                        this.setState({
+                            city: {
+                                name: json.cities[0].name,
+                                code: json.cities[0].code
+                            },
+                            district: {
+                                name: json.cities[0].districts[0].name,
+                                code: json.cities[0].districts[0].code
+                            },
+                            ward: {
+                                name: json.cities[0].districts[0].wards[0].name,
+                                code: json.cities[0].districts[0].wards[0].code
+                            }
+                        });
+
+                        this.setState({
+                            city_items: this.filterBundle("cities"),
+                            district_items: this.filterBundle("districts"),
+                            ward_items: this.filterBundle("wards")
+                        });
+                    }
+                )
+            );
     }
 
     renderOption(bundle) {
@@ -1586,13 +1926,13 @@ class TransactionDetail extends React.Component {
         this.setState({ streetNr: e.target.value });
     }
 
-    handleChangeCity = (e) => {           
+    handleChangeCity = (e) => {
         console.log(e.target.value);
         // hien tai chi co 1 thanh pho nen ko can cap nhat cai nay
-        // alert('city');        
+        // alert('city');
     }
 
-    handleChangeDistrict = (e) => {        
+    handleChangeDistrict = (e) => {
         console.log(e.target.value);
 
         const chosenDistrict = e.target.value;
@@ -1613,7 +1953,7 @@ class TransactionDetail extends React.Component {
             district: {
                 name: dd.name,
                 code: dd.code
-            }            
+            }
         });
 
         this.setState({
@@ -1627,7 +1967,7 @@ class TransactionDetail extends React.Component {
         })
     }
 
-    handleChangeWard = (e) => {        
+    handleChangeWard = (e) => {
         console.log(e.target.value);
 
         const chosenWard = e.target.value;
@@ -1666,28 +2006,28 @@ class TransactionDetail extends React.Component {
                 <FormGroup controlId="formControlsSelect">
 
                     <SelectionControl
-                        propName={"City"}
+                        propName={"Thành phố"}
                         handleChange={this.handleChangeCity}
                         items={this.state.city_items}
-                        />
-                    
+                    />
+
                     <SelectionControl
-                        propName={"District"}
+                        propName={"Quận"}
                         handleChange={this.handleChangeDistrict}
                         items={this.state.district_items}
-                        />
+                    />
 
                     <SelectionControl
-                        propName={"Ward"}
+                        propName={"Phường"}
                         handleChange={this.handleChangeWard}
                         items={this.state.ward_items}
-                        />
+                    />
 
-                    <ControlLabel>So nha va ten duong</ControlLabel>
+                    <ControlLabel>Số nhà và tên đường</ControlLabel>
                     <FormControl
                         type="text"
                         value={this.state.streetNr}
-                        placeholder="So nha va ten duong..."
+                        placeholder="Chi tiết..."
                         onChange={this.handleChangeStreetNr}
                     />
 
@@ -1696,9 +2036,9 @@ class TransactionDetail extends React.Component {
         )
     }
 
-    handleSubmit = (e) => {        
+    handleSubmit = (e) => {
         e.preventDefault();
-        
+
         Geocode.setApiKey("AIzaSyAQDOsz5Zdwks9zGw9lfDfW4LiNaP_tIV0");
 
         var self = this;
@@ -1707,34 +2047,34 @@ class TransactionDetail extends React.Component {
                 console.log(`${this.state.streetNr}, ${this.state.ward.name}, ${this.state.district.name}, ${this.state.city.name}`);
 
                 Geocode.fromAddress(`${this.state.streetNr}, ${this.state.ward.name}, ${this.state.district.name}, ${this.state.city.name}`)
-                .then(
-                    response => {
-                        const { lat, lng } = response.results[0].geometry.location;
-                        console.log(lat, lng);
+                    .then(
+                        response => {
+                            const { lat, lng } = response.results[0].geometry.location;
+                            console.log(lat, lng);
 
-                        self.setState({
-                            important: {
-                                location_code: `VN${this.state.city.code}${this.state.district.code}${this.state.ward.code}`,
-                                detail: `${this.state.streetNr}`,
-                                type: 3,
-                                lat: lat,
-                                lng: lng
-                            },
-                            address: {
-                                toString: `${this.state.streetNr}, ${this.state.ward.name}, ${this.state.district.name}, ${this.state.city.name}`
-                            }
-                        })
+                            self.setState({
+                                important: {
+                                    location_code: `VN${this.state.city.code}${this.state.district.code}${this.state.ward.code}`,
+                                    detail: `${this.state.streetNr}`,
+                                    type: 2,
+                                    lat: lat,
+                                    lng: lng
+                                },
+                                address: {
+                                    toString: `${this.state.streetNr}, ${this.state.ward.name}, ${this.state.district.name}, ${this.state.city.name}`
+                                }
+                            })
 
-                    },
-                    error => {
-                        alert(error);
-                        console.error(error);
-                    }
-                );
+                        },
+                        error => {
+                            alert(error);
+                            console.error(error);
+                        }
+                    );
                 break;
             }
             case 2: {
-                alert('2');                
+                alert('2');
                 break;
             }
             case 3: {
@@ -1748,7 +2088,7 @@ class TransactionDetail extends React.Component {
     }
 
     handleTabChange(key) {
-        alert(`selected ${key}`);
+        // alert(`selected ${key}`);
 
         switch (key) {
             case 2: {
@@ -1775,11 +2115,12 @@ class TransactionDetail extends React.Component {
         return(
             <div>
                 <pre>
-                    <p>{this.state.important.location_code}</p>
-                    <p>{this.state.important.detail}</p>
-                    <p>{this.state.important.type}</p>
-                    <p>{this.state.important.lat}</p>
-                    <p>{this.state.important.lng}</p>
+                    <p>{this.state.address.toString}</p>
+                    {/*<p>{this.state.important.location_code}</p>*/}
+                    {/*<p>{this.state.important.detail}</p>*/}
+                    {/*<p>{this.state.important.type}</p>*/}
+                    {/*<p>{this.state.important.lat}</p>*/}
+                    {/*<p>{this.state.important.lng}</p>*/}
                 </pre>
             </div>
         )
@@ -1795,8 +2136,8 @@ class TransactionDetail extends React.Component {
                 response => {
                     const address = response.results[0].formatted_address;
                     const locationData = this.state.locationData;
-                    
-                    var parts = address.split(', ');         
+
+                    var parts = address.split(', ');
                     if (parts.length == 5) {
                         let locationCode = "";
 
@@ -1832,23 +2173,45 @@ class TransactionDetail extends React.Component {
                                             important: {
                                                 location_code: locationCode,
                                                 detail: detail,
-                                                type: 3,
+                                                type: 2,
                                                 lat: lat,
                                                 lng: lng
+                                            },
+                                            address: {
+                                                important: {
+                                                    location_code: locationCode,
+                                                    detail: detail,
+                                                    type: 2,
+                                                    lat: lat,
+                                                    lng: lng
+                                                },
+                                                toString: `${address}`
                                             }
                                         });
+                                    } else {
+                                        alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                                        return;
                                     }
+                                } else {
+                                    alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                                    return;
                                 }
 
+                            } else {
+                                alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                                return;
                             }
-                        }                                                
+                        }
+                    } else {
+                        alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                        return;
                     }
 
                     self.setState({
                         address: {
                             toString: address
                         }
-                    });                    
+                    });
                     console.log(address);
                 },
                 error => {
@@ -1859,25 +2222,25 @@ class TransactionDetail extends React.Component {
     }
 
     renderGetCurrentLocation() {
-        
-        
+
+
 
         return (
-            !this.props.isGeolocationAvailable ? 
+            !this.props.isGeolocationAvailable ?
                 <div>Your browser does not support Geolocation</div>
-            : 
-                !this.props.isGeolocationEnabled ? 
+                :
+                !this.props.isGeolocationEnabled ?
                     <div>Geolocation is not enabled</div>
-                : 
-                this.props.coords ? 
-                    <table>
-                        <tbody>
-                        <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
-                        <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
-                        </tbody>
-                    </table>
-                : 
-                    <div>Getting the location data&hellip; </div>
+                    :
+                    this.props.coords ?
+                        <table>
+                            <tbody>
+                            <tr><td>Vĩ độ</td><td>{this.props.coords.latitude}</td></tr>
+                            <tr><td>Kinh độ</td><td>{this.props.coords.longitude}</td></tr>
+                            </tbody>
+                        </table>
+                        :
+                        <div>Getting the location data&hellip; </div>
         )
     }
 
@@ -1898,7 +2261,7 @@ class TransactionDetail extends React.Component {
                 response => {
                     const address = response.results[0].formatted_address;
                     const locationData = this.state.locationData;
-                    
+
                     var parts = address.split(', ');
 
                     if (parts.length == 5) {
@@ -1910,9 +2273,9 @@ class TransactionDetail extends React.Component {
                         var ward = parts[1];
                         var detail = parts[0];
 
-                        if (country == 'Việt Nam' || country == 'Vietnam') {
+                        if (country === 'Việt Nam' || country === 'Vietnam') {
                             locationCode += "VN";
-                            if (city == "Hồ Chí Minh") {
+                            if (city === "Hồ Chí Minh") {
                                 locationCode += "01";
 
                                 const districts = locationData.cities[0].districts;
@@ -1937,23 +2300,47 @@ class TransactionDetail extends React.Component {
                                             important: {
                                                 location_code: locationCode,
                                                 detail: detail,
-                                                type: 3,
+                                                type: 2,
                                                 lat: coor.lat,
                                                 lng: coor.lng
+                                            },
+                                            address: {
+                                                important: {
+                                                    location_code: locationCode,
+                                                    detail: detail,
+                                                    type: 2,
+                                                    lat: coor.lat,
+                                                    lng: coor.lng
+                                                },
+                                                toString: `${address}`
                                             }
                                         });
+                                    } else {
+                                        alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                                        return;
                                     }
+                                }  else {
+                                    alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                                    return;
                                 }
-
+                            } else {
+                                alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                                return;
                             }
-                        }                                                
+                        } else {
+                            alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                            return;
+                        }
+                    }  else {
+                        alert('Chúng tôi hiện chưa hỗ trợ địa điểm này! Mong bạn thông cảm!');
+                        return;
                     }
 
                     self.setState({
                         address: {
                             toString: address
                         }
-                    });  
+                    });
                     console.log(address);
                 },
                 error => {
@@ -1979,9 +2366,7 @@ class TransactionDetail extends React.Component {
                 left: '47%'
             },
             centerButton: {
-                position: 'relative',
-                top: '50%',
-                left: '50%'
+                float: 'right'
             }
         };
 
@@ -1998,14 +2383,14 @@ class TransactionDetail extends React.Component {
                         // userAddress={'Dong Hoi, Quang Binh'}
                         onRef={ref => this.child = ref}
                     />
-                    <div 
+                    <div
                         style={styles.frontend}
-                        >
+                    >
                         <Image src={require('../images/marker_blue.png')} width='40px' height='40px'/>
                     </div>
                 </div>
                 <div>
-                    <Button style={styles.centerButton} onClick={this.handleConfirm}> Xac nhan </Button>
+                    <Button style={styles.centerButton} onClick={this.handleConfirm}>Ok</Button>
                 </div>
             </div>
         )
@@ -2015,29 +2400,29 @@ class TransactionDetail extends React.Component {
         return (
             <Modal show={this.state.customLocationShow} onHide={this.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Tuy chinh vi tri di dong</Modal.Title>
+                    <Modal.Title>Thêm địa điểm thủ công</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Tabs 
-                        defaultActiveKey={1} 
+                    <Tabs
+                        defaultActiveKey={1}
                         animation={true}
                         activeKey={this.state.activeTab}
                         onSelect={this.handleTabChange}
-                        >
-                        <Tab eventKey={1} title="Nhap dia chi">
-                            <h4>Nhap dia chi detail roi chon quan, thanh pho</h4>        
+                    >
+                        <Tab eventKey={1} title="Nhập địa chỉ theo tên đường phố">
+                            <h4>Nhập địa chỉ theo tên đường phố</h4>
                             {this.state && this.state.locationData && this.state.city && this.state.district && this.state.ward && this.renderHandwriteLocation()}
                             {/* <hr />
                             {this.state && this.state.locationData && this.state.city && this.state.district && this.state.ward && this.test()}
                             {this.state && this.state.important && this.test2()} */}
                         </Tab>
-                        <Tab eventKey={2} title="Lay vi tri hien tai">
-                            <h4>Lay vi tri hien tai</h4>
+                        <Tab eventKey={2} title="Lấy vị trí hiện tại">
+                            <h4>Vị trí hiện tại</h4>
                             {this.renderGetCurrentLocation()}
                             <hr />
                             {this.state && this.state.important && this.test2()}
                         </Tab>
-                        <Tab eventKey={3} title="Chon tren ban do">
+                        <Tab eventKey={3} title="Chọn trên bản đồ">
                             {this.renderPickOnMap()}
                             <hr />
                             {this.state && this.state.important && this.test2()}
@@ -2045,7 +2430,12 @@ class TransactionDetail extends React.Component {
                     </Tabs>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button bsStyle="success" onClick={this.handleSubmit}>Submit</Button>                    
+                    <div style={{float: 'left'}}>
+                        <FormGroup>
+                            <Checkbox inline>Chỉnh làm địa chỉ mặc định</Checkbox>
+                        </FormGroup>
+                    </div>
+                    <Button bsStyle="success" onClick={this.handleSubmit}>Submit</Button>
                     <Button onClick={this.handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
@@ -2054,35 +2444,146 @@ class TransactionDetail extends React.Component {
 
     render() {
         return(
-            <Grid>
-                <Row>
-                    <Col md={2}>
-                        ???
-                    </Col>
-                    
-                    <Col md={8}>
-                        {this.state && this.state.transactionData && 
-                            this.renderBookInfo()
-                        }
-                        <hr/>
-                        {this.state && this.state.transactionData && 
+            <div>
+
+
+
+                <NavigationM/>
+
+                <Grid>
+                    {this.state && this.state.transactionData &&
+                        [
+                            <TransactionInfo
+                                info={this.state.transactionData}
+                            />,
+
                             this.renderAction()
-                        }             
-                    </Col>
-                    <Col md={2}>
-                        <h1>Weeee</h1>
-                    </Col>
-                </Row>
-            </Grid>
+                        ]
+                    }
+
+                    
+
+                    {/*<Row>*/}
+                        {/*<Col md={2}>*/}
+                            {/*???*/}
+                        {/*</Col>*/}
+
+                        {/*<Col md={8}>*/}
+                            {/*{this.state && this.state.transactionData &&*/}
+                            {/*this.renderBookInfo()*/}
+                            {/*}*/}
+                            {/*<hr/>*/}
+                            {/*{this.state && this.state.transactionData &&*/}
+                            {/*this.renderAction()*/}
+                            {/*}*/}
+                        {/*</Col>*/}
+                        {/*<Col md={2}>*/}
+                            {/*<h1>Weeee</h1>*/}
+                        {/*</Col>*/}
+                    {/*</Row>*/}
+                </Grid>
+            </div>
         )
     }
 }
 
-export default 
-    geolocated({
-        positionOptions: {
-            enableHighAccuracy: false,
-        },
-        userDecisionTimeout: 5000,
-    })
-(TransactionDetail);
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+const TransactionInfo = (props) => {
+
+    // TODO: check dang nhap
+    const currentEmail = localStorage.getItem('uid');
+
+    const styles = {
+        infoContainer: {
+            padding: '0px 0px',
+            backgroundColor: '#9b859b'
+        }
+    };
+
+    function statusToString(code, isOwner) {
+        switch (code) {
+            case '5':
+                return 'Giao dich bi huy';
+            case '3':
+                return isOwner ? 'Co nguoi gui request' : 'Cho doi hoi am';
+
+            case '4':
+                return isOwner ? 'REply dia chi' : 'Waiting';
+
+            case '15':
+                return isOwner ? 'O15' : 'R15';
+
+            case '6':
+                return isOwner ? 'O6' : 'R6';
+
+            case '8':
+                return isOwner ? 'O8' : 'R8';
+
+            case '11':
+                return isOwner ? 'O11' : 'R11';
+
+            case '12':
+                return isOwner ? 'O12' : 'R12';
+
+            case '16':
+                return isOwner ? 'O116' : 'R16';
+
+            case '14':
+                return isOwner ? 'O14' : 'R14';
+
+        }
+    }
+
+    return (
+        [
+            <Row style={{marginTop: '15px'}}>
+                <Col md={12} style={styles.infoContainer}>
+                    <Col md={5} style={{margin: 'auto'}}>
+                        <div style={{display: 'flex'}}>
+                            <Image src={props.info.book_image} thumbnail style={{margin: 'auto'}}/>
+                        </div>
+                    </Col>
+                    <Col md={7}>
+                        <Row>
+                            <h4><strong>{props.info.book_name}</strong></h4>
+                        </Row>
+    
+                        <Row>
+                            <h4>Chủ sở hữu: {props.info.owner_name}</h4>
+                        </Row>
+    
+                        <Row>
+                            <h4>Người mượn: {props.info.requester_name}</h4>
+                        </Row>
+    
+                        <Row>
+                            <h4>Trạng thái sách: {statusToString(props.info.status.toString(), currentEmail === props.owner_email)}</h4>
+                        </Row>
+                    </Col>
+                </Col>
+            </Row>,
+            <Row>
+                <Box label="." padding="10px 30px">
+                    <Text><h4>
+                        {props.info.last_message == null || props.info.last_message === "" ?
+                            "Không có tin nhắn nào được gửi đi trong lần trả lời gần nhất"
+                            :
+                            `Lời nhắn mới nhất: ${props.info.last_message}`
+                        }
+                    </h4></Text>
+                </Box>
+            </Row>
+        ]
+    )
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+export default
+geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})
+(VerrattiC);

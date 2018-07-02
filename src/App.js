@@ -11,6 +11,12 @@ import Shelf from './pages/Shelf';
 import BookView from './pages/BookView';
 import UserCorner from './components/UserCorner';
 import TransactionDetail from './components/TransactionDetail';
+import Authorization from "./v2/Authorization";
+import NavigationM from "./v2/NavigationM";
+import Verratti from "./v2/Verratti";
+import VerrattiQ from "./v2/VerrattiQ";
+import VerrattiW from "./v2/VerrattiW";
+import VerrattiC from "./v2/VerrattiC";
 
 class App extends React.Component {
     ComponentCategory = ({ match }) => {
@@ -60,7 +66,27 @@ class App extends React.Component {
                     />
             )
         }
-    }
+    };
+
+    ComponentDetail = ({ match }) => {
+        if (match.params.code !== "") {
+            return (
+                <VerrattiW
+                    code={match.params.code}
+                />
+            )
+        }
+    };
+
+    ComponentDMM = ({ match }) => {
+        if (match.params.id !== "") {
+            return (
+                <VerrattiC
+                    id={match.params.id}
+                />
+            )
+        }
+    };
 
     render() {
         return (
@@ -94,6 +120,16 @@ class App extends React.Component {
 
                     <Route path='/transaction' component={Transaction} exact/>
                     <Route path='/explore' component={Explore} exact/>
+
+
+                    <Route path={'/v2'} component={Authorization} exact/>
+                    <Route path={'/v2/home'} component={Verratti} exact/>
+                    <Route path={'/v2/library'} component={VerrattiQ} exact/>
+
+                    <Route path={'/v2/library/detail/:code'} component={this.ComponentDetail} exact/>
+
+                    <Route path={'/v2/transaction/:id'} component={this.ComponentDMM} exact/>
+
                     <Route component={Error}/>
                 </Switch>
             </BrowserRouter>
