@@ -41,36 +41,42 @@ class TopBar extends React.Component {
 
                     <NavbarNav left>
                         <NavItem>
-                            <form className="form-inline md-form mt-0">
-                                <input className="form-control mr-sm-2 mb-0 text-white" type="text" placeholder="Search book" aria-label="Search"/>
+                            {/*<form className="form-inline md-form mt-0">*/}
+                                {/*<input className="form-control mr-sm-2 mb-0 text-white" type="text" placeholder={`${ruben.search_book}`} aria-label="Search"/>*/}
+                            {/*</form>*/}
+                            <form className=" form-inline mt-0 active-purple-3 active-purple-4" onSubmit={() => {alert('serached')}}>
+                                <input className="form-control" type="text" placeholder={`${ruben.search_book}`} aria-label="Search"/>
                             </form>
                         </NavItem>
                     </NavbarNav>
 
                     <NavbarNav right>
-                        <NavItem>
-                            <Link to="/signup" className={"nav-link"}>{ruben.signup}</Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link to="/signin" className={"nav-link"}>{ruben.signin}</Link>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink to="#">Inbox</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <Link to="/new-book" className={"nav-link"}>{ruben.new_book}</Link>
-                        </NavItem>
-                        <NavItem>
-                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                                <DropdownToggle nav caret>Emin</DropdownToggle>
-                                <DropdownMenu>
-                                    <DropdownItem>
-                                        <Link to={'/profile'}>{ruben.profile}</Link>
-                                    </DropdownItem>
-                                    <DropdownItem>Log out</DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
-                        </NavItem>
+                        {localStorage.getItem("token") === null ?
+                            [<NavItem>
+                                <Link to="/signup" className={"nav-link"}>{ruben.signup}</Link>
+                            </NavItem>,
+                            <NavItem>
+                                <Link to="/signin" className={"nav-link"}>{ruben.signin}</Link>
+                            </NavItem>]
+                            :
+                            [<NavItem>
+                                <NavLink to="#">Inbox{' '}<span className="badge red">0</span></NavLink>
+                            </NavItem>,
+                            <NavItem>
+                                <Link to="/new-book" className={"nav-link"}>{ruben.new_book}</Link>
+                            </NavItem>,
+                            <NavItem>
+                                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                    <DropdownToggle nav caret>{localStorage.getItem('username')}</DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem>
+                                            <Link to={'/profile'}>{ruben.profile}</Link>
+                                        </DropdownItem>
+                                        <DropdownItem>{ruben.logout}</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </NavItem>]
+                        }
                     </NavbarNav>
 
                 </Collapse>

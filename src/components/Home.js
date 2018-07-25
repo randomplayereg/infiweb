@@ -109,6 +109,9 @@ export default class Home extends React.Component {
                                 autoPlay={true}
                                 slideInterval={3000}
                                 infinite={true}
+                                style={{
+                                    border: "solid 1px purple"
+                                }}
                             />
                         </Col>
                     </Row>
@@ -118,7 +121,8 @@ export default class Home extends React.Component {
                                 src={part2[this.state.fade2]}
                                 style={{
                                     width: "490px",
-                                    maxHeight: "275px"
+                                    maxHeight: "275px",
+                                    border: "solid 1px purple"
                                 }}
                                 />
                         </Col>

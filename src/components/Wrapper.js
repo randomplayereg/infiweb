@@ -13,6 +13,11 @@ import Activate from "./Activate";
 import New from "./New";
 
 export default class Wrapper extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div>

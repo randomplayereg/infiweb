@@ -2,10 +2,14 @@ import React from 'react';
 export const ruben = {
     signup: "Đăng ký",
     signin: "Đăng nhập",
+    signin_fb: "Đăng nhập với Facebook",
+    signin_gg: "Đăng nhập với Google",
+    logout: "Đăng xuất",
+    wrong_info: "Sai email hoặc mật khẩu",
     forgot_password: "Quên mật khẩu",
     no_account: "Bạn chưa có tài khoản?",
     home: "Trang chủ",
-    browse: "Tìm kiếm theo thể loại",
+    browse: "Danh mục sách",
     exchange: "Giao dịch của bạn",
     profile: "Profile của bạn",
 
@@ -22,5 +26,6 @@ export const ruben = {
     resend: "Gửi lại mã Pin",
     verify_email: "Xác nhận Email",
 
-    new_book: "Thêm sách"
+    new_book: "Thêm sách",
+    search_book: "Tìm kiếm sách..."
 };

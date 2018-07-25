@@ -3,94 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="80840c75-40d1-4c82-a3f0-01eb92667e3f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/black.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/ic_launcher-web.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/login_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/marker_blue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/spotlight1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/spotlight2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/spotlight3.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Body.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BodyBookView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BodyShelf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BodyTransaction.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookContent.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookContent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookDetail.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BookGrid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardGrid.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CategoryCarousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DemoGeo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ExtraInfo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/Copyright.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/Info.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/LogInModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/NavigationBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainContent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MyFancyComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SideNavigation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransactionDetail.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserCorner.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Utils/Geocode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/ad1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/ad2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/ad3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/black.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/ic_launcher-web.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/login_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/marker_blue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/spotlight1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/spotlight2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/spotlight3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ruben.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ruben.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Browse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Browse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/New.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/New.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Signin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Signin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Wrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Wrapper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/BookView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Explore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Carousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Introduction.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Spotlight.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Shelf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store/CategoryListView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store/CategoryView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store/ItemView.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store/ItemView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store/ListView.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Store/ic_launcher-web.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/StoreBooks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Transaction.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/react-geocode/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/react-geocode/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/react-geocode/lib/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/react-geocode/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/Authorization.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/Library.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/Login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/NavigationM.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/NavigationM.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/SpotlightM.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/SpotlightM.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/Utils/Geocode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/Verratti.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiC.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiC.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiD.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiE.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiE.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiQ.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiQ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiW.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/v2/VerrattiW.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -107,29 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="Wrapper.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Wrapper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Router.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Router.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+            <state relative-caret-position="-11">
+              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -137,32 +43,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Activate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Activate.js">
+      <file leaf-file-name="TopBar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/TopBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="26" selection-start-line="3" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="118" column="32" selection-start-line="118" selection-start-column="32" selection-end-line="121" selection-end-column="34" />
+            <state relative-caret-position="380">
+              <caret line="70" column="50" lean-forward="true" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
               <folding>
-                <element signature="e#31#57#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ad.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/ad.css">
+      <file leaf-file-name="Signin.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Signin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+            <state relative-caret-position="159">
+              <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -170,17 +70,17 @@
       <file leaf-file-name="Ruben.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Ruben.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+            <state relative-caret-position="102">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Wrapper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Wrapper.js">
+      <file leaf-file-name="BrowseClone.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/BrowseClone.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+            <state relative-caret-position="457">
+              <caret line="111" column="35" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -188,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopBar.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/TopBar.js">
+      <file leaf-file-name="Browse.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Browse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="60" column="87" selection-start-line="60" selection-start-column="87" selection-end-line="60" selection-end-column="87" />
+            <state relative-caret-position="238">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -200,11 +100,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="New.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/New.js">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+            <state relative-caret-position="136">
+              <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Profile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Profile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="101" column="81" lean-forward="true" selection-start-line="101" selection-start-column="81" selection-end-line="101" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginbtn.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/loginbtn.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+              <folding>
+                <element signature="e#31#57#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -220,12 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ruben.</find>
-      <find>Ed</find>
-      <find>about</find>
-      <find>john</find>
-      <find>Robben</find>
-      <find>language</find>
       <find>accountset</find>
       <find>ref</find>
       <find>this.child</find>
@@ -250,6 +177,12 @@
       <find>toTitle</find>
       <find>TabsPage</find>
       <find>pin</find>
+      <find>Tab</find>
+      <find>NavigationM</find>
+      <find>Grid</find>
+      <find>card</find>
+      <find>props</find>
+      <find>Link</find>
     </findStrings>
     <replaceStrings>
       <replace>ItemView</replace>
@@ -280,6 +213,7 @@
       <replace>Test</replace>
       <replace>TopBar</replace>
       <replace>SideMenu</replace>
+      <replace>grid-cell</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -288,11 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/v2/components/VerrattiW.js" />
-        <option value="$PROJECT_DIR$/src/components/TransactionDetail.js" />
-        <option value="$PROJECT_DIR$/src/v2/components/ExchangeDetail.js" />
-        <option value="$PROJECT_DIR$/src/v2/components/HomePage.js" />
-        <option value="$PROJECT_DIR$/src/v2/components/Bookshelf.js" />
         <option value="$PROJECT_DIR$/src/v2/components/BookDetail.js" />
         <option value="$PROJECT_DIR$/src/v2/css/profile.css" />
         <option value="$PROJECT_DIR$/src/App.js" />
@@ -302,7 +231,6 @@
         <option value="$PROJECT_DIR$/src/v2/components/Profile.js" />
         <option value="$PROJECT_DIR$/src/v2/css/Login.css" />
         <option value="$PROJECT_DIR$/src/v2/components/Authorization.js" />
-        <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/v2/css/login.css" />
         <option value="$PROJECT_DIR$/src/v2/components/Login.js" />
         <option value="$PROJECT_DIR$/src/v2/css/signup.css" />
@@ -316,29 +244,35 @@
         <option value="$PROJECT_DIR$/src/components/test.js" />
         <option value="$PROJECT_DIR$/src/components/Test.js" />
         <option value="$PROJECT_DIR$/src/components/TestT.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/BrandBar.js" />
-        <option value="$PROJECT_DIR$/src/components/Browse.js" />
         <option value="$PROJECT_DIR$/src/components/Exchange.js" />
-        <option value="$PROJECT_DIR$/src/components/Profile.js" />
         <option value="$PROJECT_DIR$/src/components/BrowseDetail.js" />
         <option value="$PROJECT_DIR$/src/components/ExchangeDetail.js" />
         <option value="$PROJECT_DIR$/src/css/hr.css" />
         <option value="$PROJECT_DIR$/src/components/SideMenu.js" />
         <option value="$PROJECT_DIR$/src/Router.js" />
-        <option value="$PROJECT_DIR$/src/components/Signin.js" />
         <option value="$PROJECT_DIR$/src/css/datepicker.css" />
         <option value="$PROJECT_DIR$/src/components/Signup.js" />
-        <option value="$PROJECT_DIR$/src/components/New.js" />
-        <option value="$PROJECT_DIR$/src/components/Wrapper.js" />
-        <option value="$PROJECT_DIR$/src/components/TopBar.js" />
-        <option value="$PROJECT_DIR$/src/Ruben.js" />
         <option value="$PROJECT_DIR$/src/components/Activate.js" />
         <option value="$PROJECT_DIR$/src/css/home.css" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Home.js" />
         <option value="$PROJECT_DIR$/src/css/ad.css" />
+        <option value="$PROJECT_DIR$/src/index.css" />
+        <option value="$PROJECT_DIR$/src/components/New.js" />
+        <option value="$PROJECT_DIR$/src/css/bookgrid.css" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/components/chesst/UploadFile.js" />
+        <option value="$PROJECT_DIR$/src/components/Browse.js" />
+        <option value="$PROJECT_DIR$/src/css/VerrattiQ.css" />
+        <option value="$PROJECT_DIR$/src/components/BrowseClone.js" />
+        <option value="$PROJECT_DIR$/src/components/Home.js" />
+        <option value="$PROJECT_DIR$/src/components/Profile.js" />
+        <option value="$PROJECT_DIR$/src/css/loginbtn.css" />
+        <option value="$PROJECT_DIR$/src/components/Wrapper.js" />
+        <option value="$PROJECT_DIR$/src/components/Signin.js" />
+        <option value="$PROJECT_DIR$/src/Ruben.js" />
+        <option value="$PROJECT_DIR$/src/components/TopBar.js" />
       </list>
     </option>
   </component>
@@ -405,6 +339,13 @@
               <item name="sakata-gintoki" type="b2602c69:ProjectViewProjectNode" />
               <item name="sakata-gintoki" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="chesst" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sakata-gintoki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sakata-gintoki" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -415,7 +356,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="naviga&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/Header/NavigationBar.js&#10;global&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/css/globalheader.css&#10;rou&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/Router.js&#10;signup&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/css/signup.css&#10;globa&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/GlobalHeader.js&#10;edit&#9;null&#9;null&#10;router&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/Router.js&#10;Glob&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/GlobalHeader.js&#10;fetch&#9;null&#9;null&#10;servi&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/Utils/Services.js&#10;login&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Login.js&#10;profile&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Profile.js&#10;bookde&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/BookDetail.js&#10;logout&#9;null&#9;null&#10;aut&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Authorization.js&#10;Router&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/Router.js&#10;App&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/App.js&#10;&quot;Roboto&#9;null&#9;null&#10;index&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/public/index.html&#10;app&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/App.js&#10;myfan&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/MyFancyComponent.js&#10;Autho&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Authorization.js&#10;edit_location&#9;null&#9;null&#10;NavigationM&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/NavigationM.js&#10;profile.css&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/css/profile.css&#10;index.htm&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/public/index.html&#10;aap&#9;null&#9;null&#10;transac&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/TransactionDetail.js&#10;MainConten&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/MainContent.js&#10;verra&#9;null&#9;null&#10;Verra&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiC.css&#10;Verrat&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiQ.css&#10;navigationM&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/NavigationM.js&#10;verrattic&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiC.css&#10;app.js&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/App.js&#10;C.css&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiC.css&#10;verratti&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiQ.js&#10;VerrattiQ&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiQ.js&#10;convert&#9;null&#9;null&#10;spotlight&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/SpotlightM.js&#10;BookDe&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/BookDetail.js&#10;tran&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/TransactionDetail.js&#10;tra&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/TransactionDetail.js&#10;react-boo&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/node_modules/react-bootstrap" />
+    <property name="SearchEverywhereHistoryKey" value="Brow&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/sakata-gintoki/src/components/Browse.js&#10;Ruben&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/sakata-gintoki/src/Ruben.js&#10;naviga&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/Header/NavigationBar.js&#10;global&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/css/globalheader.css&#10;rou&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/Router.js&#10;signup&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/css/signup.css&#10;globa&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/GlobalHeader.js&#10;edit&#9;null&#9;null&#10;router&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/Router.js&#10;Glob&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/GlobalHeader.js&#10;fetch&#9;null&#9;null&#10;servi&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/Utils/Services.js&#10;login&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Login.js&#10;profile&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Profile.js&#10;bookde&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/BookDetail.js&#10;logout&#9;null&#9;null&#10;aut&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Authorization.js&#10;Router&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/Router.js&#10;App&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/App.js&#10;&quot;Roboto&#9;null&#9;null&#10;index&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/public/index.html&#10;app&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/App.js&#10;myfan&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/MyFancyComponent.js&#10;Autho&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/Authorization.js&#10;edit_location&#9;null&#9;null&#10;NavigationM&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/components/NavigationM.js&#10;profile.css&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/css/profile.css&#10;index.htm&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/public/index.html&#10;aap&#9;null&#9;null&#10;transac&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/TransactionDetail.js&#10;MainConten&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/MainContent.js&#10;verra&#9;null&#9;null&#10;Verra&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiC.css&#10;Verrat&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiQ.css&#10;navigationM&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/NavigationM.js&#10;verrattic&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiC.css&#10;app.js&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/App.js&#10;C.css&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiC.css&#10;verratti&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiQ.js&#10;VerrattiQ&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/VerrattiQ.js&#10;convert&#9;null&#9;null&#10;spotlight&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/v2/SpotlightM.js&#10;BookDe&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/BookDetail.js&#10;tran&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/TransactionDetail.js&#10;tra&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/src/components/TransactionDetail.js&#10;react-boo&#9;FILE&#9;file://D:/WORK/graduation project/2018/WEB/infibook-web/node_modules/react-bootstrap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../infibook-web" />
     <property name="nodejs_interpreter_path" value="node" />
@@ -423,18 +364,18 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2" />
-      <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\images" />
-      <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2\Authorization" />
-      <recent name="$PROJECT_DIR$/src/pages/Store" />
-      <recent name="$PROJECT_DIR$/public/images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2" />
       <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2\css" />
       <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2\components" />
       <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2\Authorization\css" />
+      <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2\Authorization" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WORK\graduation project\2018\WEB\sakata-gintoki\src\components" />
+      <recent name="D:\WORK\graduation project\2018\WEB\sakata-gintoki\src\css" />
+      <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2" />
+      <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\images" />
       <recent name="D:\WORK\graduation project\2018\WEB\infibook-web\src\v2\Authorization" />
     </key>
   </component>
@@ -502,12 +443,12 @@
       <workItem from="1532415230855" duration="1328000" />
       <workItem from="1532416882936" duration="8000" />
       <workItem from="1532417413850" duration="16736000" />
-      <workItem from="1532457063579" duration="8601000" />
+      <workItem from="1532457063579" duration="27880000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414431000" />
+    <option name="totallyTimeSpent" value="433710000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -582,12 +523,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/v2/components/TransactionOwner.js" />
-    <entry file="file://$PROJECT_DIR$/src/v2/css/profile.css" />
-    <entry file="file://$PROJECT_DIR$/src/v2/css/NavigationM.css" />
-    <entry file="file://$PROJECT_DIR$/src/v2/components/NavigationM.js" />
-    <entry file="file://$PROJECT_DIR$/src/v2/components/VerrattiD.js" />
-    <entry file="file://$PROJECT_DIR$/src/v2/components/Bookshelf.js" />
     <entry file="file://$PROJECT_DIR$/src/components/MyFancyComponent.js" />
     <entry file="file://$PROJECT_DIR$/src/v2/components/GlobalFooter.js" />
     <entry file="file://$PROJECT_DIR$/src/v2/components/Spinning.js" />
@@ -607,21 +542,7 @@
     <entry file="file://$PROJECT_DIR$/src/v2/components/Login.js" />
     <entry file="file://$PROJECT_DIR$/src/v2/components/GlobalHeader.js" />
     <entry file="file://$PROJECT_DIR$/src/v2/css/globalheader.css" />
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/BrandBar.js" />
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SideMenu.js" />
     <entry file="file://$PROJECT_DIR$/src/components/TestT.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -634,13 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Browse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -665,13 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SideMenu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -689,54 +596,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Signup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="89" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ruben.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Activate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="26" selection-start-line="3" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Wrapper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -750,10 +613,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/css/ad.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        <state relative-caret-position="34">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/New.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/bookgrid.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -764,34 +658,129 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/chesst/UploadFile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/VerrattiQ.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="69" column="41" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Signup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="35" selection-start-line="2" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="118" column="32" selection-start-line="118" selection-start-column="32" selection-end-line="121" selection-end-column="34" />
+        <state relative-caret-position="6">
+          <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
           <folding>
             <element signature="e#31#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/ad.css">
+    <entry file="file://$PROJECT_DIR$/src/components/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        <state relative-caret-position="544">
+          <caret line="101" column="81" lean-forward="true" selection-start-line="101" selection-start-column="81" selection-end-line="101" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/New.js">
+    <entry file="file://$PROJECT_DIR$/src/css/loginbtn.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        <state relative-caret-position="34">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Wrapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Ruben.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TopBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="60" column="87" selection-start-line="60" selection-start-column="87" selection-end-line="60" selection-end-column="87" />
+        <state relative-caret-position="380">
+          <caret line="70" column="50" lean-forward="true" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Browse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/BrowseClone.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="111" column="35" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -1,0 +1,82 @@
+.grid-cell-container {
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    grid-gap: 1rem;
+}
+
+.grid-cell {
+    display: grid;
+}
+
+.grid-cell:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+.grid-cell .button {
+    align-self: end;
+}
+
+/* Simple Card styles for prettying */
+
+* {
+    box-sizing: border-box;
+}
+
+.grid-cell {
+    box-shadow: 0px 1px 5px #555;
+    background-color: white;
+
+    text-decoration: none;
+    color: #000;
+}
+
+.grid-cell__title {
+    font-size: 1.4rem;
+    padding: .5rem;
+    text-align: center;
+}
+
+.grid-cell__description {
+    padding: .5rem;
+    line-height: 1.6em;
+}
+
+.grid-cell__thumbnail {
+    width: 250px;
+    height: 250px;
+    padding: 5px;
+}
+
+.button {
+    display: block;
+    background-color: tomato;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: .3s ease-out;
+}
+
+img {
+    max-width: 100%;
+}
+
+.tabactive {
+    color: #fff;
+    background-color: var(--dark-purple);
+    padding: 5px 5px;
+}
+
+.tabnormal {
+    color: var(--dark-purple);
+    padding: 5px 5px;
+}
+
+.tabnormal:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
