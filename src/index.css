@@ -1,5 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --neutral-purple:#746EA9;
+  --lime-green:#32cd32;
 }

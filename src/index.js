@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import 'primereact/resources/primereact.min.css';
-import 'primereact/resources/themes/omega/theme.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
+import "react-image-gallery/styles/css/image-gallery.css";
 
 import registerServiceWorker from './registerServiceWorker';
 
